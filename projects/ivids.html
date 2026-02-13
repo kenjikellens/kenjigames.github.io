@@ -63,27 +63,78 @@
                 </header>
 
                 <section class="section">
-                    <h2>Technical Specification</h2>
-                    <div class="info-card">
-                        <p>IVIDS is a specialized application designed to provide a native-feeling streaming experience
-                            within the browser. It prioritizes efficient DOM handling and reactive UI transitions to
-                            ensure a high-fidelity user journey.</p>
+                    <div class="info-card" style="margin-bottom: 3rem;">
+                        <h2>Developing a Native Experience</h2>
+                        <p style="font-size: 1.1rem; color: var(--text-main); line-height: 1.7;">IVIDS was born from a
+                            pursuit of removing the "web barrier" in content consumption. Traditionally, browser-based
+                            streaming feels detached and sluggish. IVIDS reimagines this by utilizing low-level DOM
+                            manipulations and hardware-accelerated transitions to deliver a native-class application
+                            feel.</p>
+                    </div>
 
-                        <h3 style="margin-top: 2rem;">Core Features</h3>
-                        <ul style="margin-left: 1.5rem; color: var(--text-dim);">
-                            <li style="margin-bottom: 0.5rem;">Dynamic content filtering and metadata retrieval.</li>
-                            <li style="margin-bottom: 0.5rem;">Optimized video playback architecture with custom
-                                controls.</li>
-                            <li style="margin-bottom: 0.5rem;">High-performance layout system using modern CSS Grid.
-                            </li>
-                        </ul>
+                    <div class="grid-layout" style="margin-bottom: 3rem;">
+                        <article class="info-card">
+                            <i class="fas fa-magic"
+                                style="font-size: 2rem; color: var(--primary-blue); margin-bottom: 1rem;"></i>
+                            <h3>Cinematic UI</h3>
+                            <p>Hand-crafted animations and layouts that prioritize visual immersion and zero-latency
+                                feedback during navigation.</p>
+                        </article>
+                        <article class="info-card">
+                            <i class="fas fa-database"
+                                style="font-size: 2rem; color: var(--primary-violet); margin-bottom: 1rem;"></i>
+                            <h3>Metadata Sync</h3>
+                            <p>Real-time integration with the TMDB API to fetch high-resolution posters, backdrops, and
+                                actor biographies instantly.</p>
+                        </article>
+                        <article class="info-card">
+                            <i class="fas fa-bolt"
+                                style="font-size: 2rem; color: var(--primary-blue); margin-bottom: 1rem;"></i>
+                            <h3>Optimized Playback</h3>
+                            <p>Custom-built buffer management logic that minimizes startup time and ensures consistent
+                                bitrate delivery across variable networks.</p>
+                        </article>
+                        <article class="info-card">
+                            <i class="fas fa-mobile-alt"
+                                style="font-size: 2rem; color: var(--primary-violet); margin-bottom: 1rem;"></i>
+                            <h3>Responsive Core</h3>
+                            <p>A fluid architecture that maintains high-fidelity design standards across desktops,
+                                tablets, and mobile devices.</p>
+                        </article>
+                    </div>
+
+                    <div class="info-card" style="margin-bottom: 3rem;">
+                        <h3>Technical Stack</h3>
+                        <p style="margin-bottom: 1.5rem;">The project relies on a strictly curated stack to ensure
+                            sustainability and extreme performance.</p>
+                        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+                            <span class="type-badge" style="background: rgba(43, 108, 176, 0.2); color: #4299e1;">HTML5
+                                Semantic</span>
+                            <span class="type-badge" style="background: rgba(128, 90, 213, 0.2); color: #9f7aea;">Modern
+                                CSS Grid</span>
+                            <span class="type-badge"
+                                style="background: rgba(43, 108, 176, 0.2); color: #4299e1;">Vanilla ES6+</span>
+                            <span class="type-badge" style="background: rgba(128, 90, 213, 0.2); color: #9f7aea;">TMDB
+                                REST API</span>
+                            <span class="type-badge" style="background: rgba(43, 108, 176, 0.2); color: #4299e1;">Canvas
+                                API</span>
+                        </div>
+                    </div>
+
+                    <div class="info-card" style="margin-bottom: 3rem;">
+                        <h3>Architectural Insight: The "Vanilla-First" Approach</h3>
+                        <p>At the center of IVIDS is a design philosophy focused on <strong>Zero Overhead</strong>. By
+                            avoiding bulky frameworks like React or Angular, the application achieves a near-instant
+                            First Contentful Paint (FCP). The state management is handled through native JavaScript
+                            Proxies, ensuring that UI updates are surgical and high-performance.</p>
                     </div>
                 </section>
 
                 <section class="section">
-                    <div style="display: flex; gap: 1rem;">
-                        <a href="https://github.com/kenjikellens/IVIDS" target="_blank" class="btn-standard">Access
-                            Repository</a>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <a href="https://github.com/kenjikellens/IVIDS" target="_blank" class="btn-standard">
+                            <i class="fab fa-github"></i> Access Repository
+                        </a>
                         <a href="../index.html#projects" class="btn-standard btn-outline">Back to Projects</a>
                     </div>
                 </section>
