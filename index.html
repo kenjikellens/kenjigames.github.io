@@ -4,33 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KenjiGames | Professional Gaming Hub</title>
-    <meta name="description" content="Portfolio and projects of Kenji Kellens, founder of KenjiGames.">
+    <title>KenjiGames | Official Portfolio</title>
+    <meta name="description" content="Official portfolio and project showcase for KenjiGames.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <div class="app-container">
-        <!-- Mobile Header -->
-        <header class="mobile-header">
-            <div class="logo">
-                <span class="logo-text">KenjiGames</span>
-            </div>
-            <button class="menu-toggle" id="menuToggle">
+    <div class="app-wrapper">
+        <!-- Mobile Navigation Header -->
+        <header class="mobile-nav">
+            <a href="index.html" class="sidebar-logo">KenjiGames</a>
+            <button class="menu-trigger" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
         </header>
 
-        <!-- Persistent Sidebar -->
-        <nav class="sidebar">
-            <div class="sidebar-brand">
-                <div class="logo">
-                    <span class="logo-text">KenjiGames</span>
-                </div>
+        <!-- Fixed Sidebar -->
+        <nav class="sidebar" id="mainSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-logo">KenjiGames</a>
             </div>
 
-            <ul class="nav-menu">
+            <ul class="nav-list">
                 <li class="nav-item">
                     <a href="index.html" class="nav-link active">
                         <i class="fas fa-home"></i>
@@ -40,7 +36,7 @@
                 <li class="nav-item">
                     <a href="projects/ivids.html" class="nav-link">
                         <i class="fas fa-film"></i>
-                        <span>IVIDS</span>
+                        <span>IVIDS Movie App</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -52,12 +48,12 @@
                 <li class="nav-item">
                     <a href="#youtube" class="nav-link">
                         <i class="fab fa-youtube"></i>
-                        <span>YouTube</span>
+                        <span>YouTube Channel</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#about" class="nav-link">
-                        <i class="fas fa-user-astronaut"></i>
+                        <i class="fas fa-info-circle"></i>
                         <span>About</span>
                     </a>
                 </li>
@@ -70,73 +66,81 @@
             </ul>
 
             <div class="sidebar-footer">
-                <a href="https://github.com/kenjikellens" target="_blank" class="social-link">
+                <a href="https://github.com/kenjikellens" target="_blank" class="footer-icon">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.youtube.com/channel/UCv1f4AvA8o0d9v9xD7e54zw" target="_blank" class="social-link">
+                <a href="https://www.youtube.com/channel/UCv1f4AvA8o0d9v9xD7e54zw" target="_blank" class="footer-icon">
                     <i class="fab fa-youtube"></i>
                 </a>
             </div>
         </nav>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <header class="hero">
-                <div class="container">
-                    <div class="hero-content">
-                        <span class="badge">Innovation in Gaming</span>
-                        <h1 class="hero-title">Engineering<br>Experiences.</h1>
-                        <p class="hero-subtitle">The creative initiative of Kenji Kellens, focused on building
-                            professional-grade tools and immersive gaming content.</p>
-                        <div class="hero-actions">
-                            <a href="#projects" class="btn btn-primary">
-                                Explore Projects
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                            <a href="https://www.youtube.com/channel/UCv1f4AvA8o0d9v9xD7e54zw" target="_blank"
-                                class="btn btn-secondary">
-                                Watch Content
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </header>
+        <!-- Main Content Area -->
+        <main class="main-area">
+            <div class="page-container">
+                <header class="hero-block">
+                    <h1>KenjiGames Portfolio</h1>
+                    <p class="hero-subtitle">Official project showcase and resources for the gaming and development
+                        initiatives led by Kenji Kellens.</p>
+                </header>
 
-            <section id="projects" class="section">
-                <div class="container">
-                    <div class="card-grid">
-                        <div class="glass-card">
-                            <span class="badge">Movie Streaming</span>
+                <section id="projects" class="section">
+                    <h2>Featured Projects</h2>
+                    <div class="grid-layout">
+                        <article class="info-card">
+                            <span class="type-badge">Software</span>
                             <h3>IVIDS</h3>
-                            <p>A flagship cinematic interface for movie discovery and streaming, built with reactive
-                                JavaScript.</p>
-                            <a href="projects/ivids.html" class="btn-link">Learn More <i
-                                    class="fas fa-chevron-right"></i></a>
-                        </div>
-                        <div class="glass-card">
-                            <span class="badge">Utilities</span>
-                            <h3>CreamInstaller</h3>
-                            <p>An automated gaming DLC management tool designed for precision and cross-platform
-                                compatibility.</p>
-                            <a href="projects/creaminstaller.html" class="btn-link">Learn More <i
-                                    class="fas fa-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                            <p>A cinematic interface for movie discovery and streaming, optimized for performance and
+                                clean user experience.</p>
+                            <a href="projects/ivids.html" class="btn-standard btn-outline">Project Details <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </article>
 
-            <section id="about" class="section">
-                <div class="container">
-                    <div class="glass-card">
-                        <h2 style="margin-bottom: 24px;">The Vision</h2>
-                        <p style="color: var(--text-dim); font-size: 1.1rem; max-width: 800px;">
-                            KenjiGames is dedicated to the intersection of code and play. We believe that gaming tools
-                            should be as polished as the games they support, and content should reflect the passion
-                            behind the screen.
-                        </p>
+                        <article class="info-card">
+                            <span class="type-badge">System Tool</span>
+                            <h3>CreamInstaller</h3>
+                            <p>Automated DLC component manager for Windows-based gaming platforms, ensuring library
+                                consistency across launchers.</p>
+                            <a href="projects/creaminstaller.html" class="btn-standard btn-outline">Project Details <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </article>
                     </div>
-                </div>
-            </section>
+                </section>
+
+                <section id="about" class="section">
+                    <h2>About KenjiGames</h2>
+                    <div class="info-card">
+                        <p>KenjiGames is focused on the professional intersection of software development and the gaming
+                            industry. Our mission is to produce robust tools and engaging content that enhance the
+                            digital experience for players and developers alike.</p>
+                        <p>With a foundation in C# and modern web technologies, we prioritize technical excellence and
+                            intuitive design in every project.</p>
+                    </div>
+                </section>
+
+                <section id="contact" class="section">
+                    <h2>Contact & Resources</h2>
+                    <div class="grid-layout">
+                        <article class="info-card">
+                            <h3>GitHub</h3>
+                            <p>Access the source code and documentation for all active repositories.</p>
+                            <a href="https://github.com/kenjikellens" target="_blank" class="btn-standard">Visit
+                                Profile</a>
+                        </article>
+                        <article class="info-card">
+                            <h3>YouTube</h3>
+                            <p>Watch gameplay, technical overviews, and community content.</p>
+                            <a href="https://www.youtube.com/channel/UCv1f4AvA8o0d9v9xD7e54zw" target="_blank"
+                                class="btn-standard">View Channel</a>
+                        </article>
+                    </div>
+                </section>
+
+                <footer
+                    style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-dim); font-size: 0.9rem; text-align: center;">
+                    <p>&copy; 2026 KenjiGames. All rights reserved.</p>
+                </footer>
+            </div>
         </main>
     </div>
 

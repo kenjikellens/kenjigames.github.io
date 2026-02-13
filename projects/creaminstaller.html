@@ -10,120 +10,84 @@
 </head>
 
 <body>
-    <div class="app-container">
-        <!-- Mobile Header -->
-        <header class="mobile-header">
-            <div class="logo">
-                <span class="logo-text">KenjiGames</span>
-            </div>
-            <button class="menu-toggle" id="menuToggle">
+    <div class="app-wrapper">
+        <!-- Mobile Navigation Header -->
+        <header class="mobile-nav">
+            <a href="../index.html" class="sidebar-logo">KenjiGames</a>
+            <button class="menu-trigger" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
         </header>
 
-        <!-- Persistent Sidebar -->
-        <nav class="sidebar">
-            <div class="sidebar-brand">
-                <div class="logo">
-                    <span class="logo-text">KenjiGames</span>
-                </div>
+        <!-- Fixed Sidebar -->
+        <nav class="sidebar" id="mainSidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" class="sidebar-logo">KenjiGames</a>
             </div>
 
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="../index.html" class="nav-link">
-                        <i class="fas fa-home"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="ivids.html" class="nav-link">
-                        <i class="fas fa-film"></i>
-                        <span>IVIDS</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="creaminstaller.html" class="nav-link active">
-                        <i class="fas fa-tools"></i>
-                        <span>CreamInstaller</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../index.html#youtube" class="nav-link">
-                        <i class="fab fa-youtube"></i>
-                        <span>YouTube</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../index.html#about" class="nav-link">
-                        <i class="fas fa-user-astronaut"></i>
-                        <span>About</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../index.html#contact" class="nav-link">
-                        <i class="fas fa-envelope"></i>
-                        <span>Contact</span>
-                    </a>
-                </li>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../index.html" class="nav-link"><i
+                            class="fas fa-home"></i><span>Home</span></a></li>
+                <li class="nav-item"><a href="ivids.html" class="nav-link"><i class="fas fa-film"></i><span>IVIDS Movie
+                            App</span></a></li>
+                <li class="nav-item"><a href="creaminstaller.html" class="nav-link active"><i
+                            class="fas fa-tools"></i><span>CreamInstaller</span></a></li>
+                <li class="nav-item"><a href="../index.html#youtube" class="nav-link"><i
+                            class="fab fa-youtube"></i><span>YouTube Channel</span></a></li>
+                <li class="nav-item"><a href="../index.html#about" class="nav-link"><i
+                            class="fas fa-info-circle"></i><span>About</span></a></li>
+                <li class="nav-item"><a href="../index.html#contact" class="nav-link"><i
+                            class="fas fa-envelope"></i><span>Contact</span></a></li>
             </ul>
 
             <div class="sidebar-footer">
-                <a href="https://github.com/kenjikellens" target="_blank" class="social-link">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.youtube.com/channel/UCv1f4AvA8o0d9v9xD7e54zw" target="_blank" class="social-link">
-                    <i class="fab fa-youtube"></i>
-                </a>
+                <a href="https://github.com/kenjikellens" target="_blank" class="footer-icon"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.youtube.com/channel/UCv1f4AvA8o0d9v9xD7e54zw" target="_blank"
+                    class="footer-icon"><i class="fab fa-youtube"></i></a>
             </div>
         </nav>
 
-        <main class="main-content">
-            <header class="hero" style="min-height: 60vh;">
-                <div class="container">
-                    <div class="hero-content">
-                        <span class="badge">Systems Utility</span>
-                        <h1 class="hero-title">CreamInstaller</h1>
-                        <p class="hero-subtitle">A sophisticated C# automation tool for managing DLL components across
-                            multiple gaming distribution platforms.</p>
-                        <div class="hero-actions">
-                            <a href="https://github.com/kenjikellens/CreamInstaller" target="_blank"
-                                class="btn btn-primary">
-                                Repository
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="../index.html#projects" class="btn btn-secondary">
-                                Back to Projects
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </header>
+        <main class="main-area">
+            <div class="page-container">
+                <header class="hero-block">
+                    <span class="type-badge">System Utility</span>
+                    <h1>CreamInstaller</h1>
+                    <p class="hero-subtitle">Automated library management for gaming distribution platforms.</p>
+                </header>
 
-            <section class="section">
-                <div class="container">
-                    <div class="glass-card">
-                        <h2 style="margin-bottom: 24px;">Technical Specification</h2>
-                        <p style="color: var(--text-dim); margin-bottom: 20px;">
-                            Built on the .NET framework, CreamInstaller specializes in the automated detection and
-                            configuration of DLC-related library files. It bridges the gap between Steam, Epic Games,
-                            and Ubisoft libraries, offering a unified interface for system-level tool management.
-                        </p>
-                        <div class="card-grid" style="margin-top: 40px;">
-                            <div>
-                                <h4 style="margin-bottom: 12px; color: var(--primary-violet);">Platform Agnostic</h4>
-                                <p style="color: var(--text-dim); font-size: 0.95rem;">Intelligent detection of diverse
-                                    game installation directories across multiple launchers.</p>
-                            </div>
-                            <div>
-                                <h4 style="margin-bottom: 12px; color: var(--primary-violet);">Automated DLL Logic</h4>
-                                <p style="color: var(--text-dim); font-size: 0.95rem;">Streamlines library management
-                                    using recursive directory scanning and precise file handling.</p>
-                            </div>
-                        </div>
+                <section class="section">
+                    <h2>Technical Specification</h2>
+                    <div class="info-card">
+                        <p>CreamInstaller is a C# utility developed to optimize the management of dynamic link library
+                            (DLL) components across Steam, Epic Games, and Ubisoft installations. It focuses on
+                            identifying and configuring correctly matched resources for sustained library integrity.</p>
+
+                        <h3 style="margin-top: 2rem;">Development Architecture</h3>
+                        <ul style="margin-left: 1.5rem; color: var(--text-dim);">
+                            <li style="margin-bottom: 0.5rem;">C# / .NET core logic for precision filesystem operations.
+                            </li>
+                            <li style="margin-bottom: 0.5rem;">Launch-agnostic directory crawling and resource
+                                identification.</li>
+                            <li style="margin-bottom: 0.5rem;">Streamlined user interface for rapid deployment and
+                                updates.</li>
+                        </ul>
                     </div>
-                </div>
-            </section>
+                </section>
+
+                <section class="section">
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://github.com/kenjikellens/CreamInstaller" target="_blank"
+                            class="btn-standard">Access Repository</a>
+                        <a href="../index.html#projects" class="btn-standard btn-outline">Back to Projects</a>
+                    </div>
+                </section>
+
+                <footer
+                    style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-dim); font-size: 0.9rem; text-align: center;">
+                    <p>&copy; 2026 KenjiGames. All rights reserved.</p>
+                </footer>
+            </div>
         </main>
     </div>
 

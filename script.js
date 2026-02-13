@@ -1,61 +1,60 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Sidebar Mobile Toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.querySelector('.sidebar');
-    const appContainer = document.querySelector('.app-container');
+    // 1. Sidebar Toggle Logic
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.getElementById('mainSidebar');
 
-    if (menuToggle && sidebar) {
-        menuToggle.addEventListener('click', (e) => {
+    if (menuBtn && sidebar) {
+        menuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            sidebar.classList.toggle('active');
+            sidebar.classList.toggle('visible');
         });
 
-        // Close sidebar when clicking outside on mobile
+        // Close sidebar on document click (outside sidebar)
         document.addEventListener('click', (e) => {
-            if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && e.target !== menuToggle) {
-                sidebar.classList.remove('active');
+            if (sidebar.classList.contains('visible') && !sidebar.contains(e.target) && e.target !== menuBtn) {
+                sidebar.classList.remove('visible');
             }
         });
     }
 
-    // 2. Navigation Handling (Directory Agnostic)
+    // 2. Navigation & Smooth Scrolling
     const navLinks = document.querySelectorAll('.nav-link');
 
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
 
-            // Close sidebar on mobile after clicking a link
-            if (sidebar && sidebar.classList.contains('active')) {
-                sidebar.classList.remove('active');
-            }
+            // Close mobile menu on navigate
+            if (sidebar) sidebar.classList.remove('visible');
 
-            // Handle internal anchors on the SAME page
+            // Handle internal anchors on the same page
             if (href.startsWith('#')) {
                 const targetElement = document.getElementById(href.substring(1));
                 if (targetElement) {
                     e.preventDefault();
+                    const offset = window.innerWidth <= 1024 ? 80 : 20;
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80, // Offset for mobile header
+                        top: targetElement.offsetTop - offset,
                         behavior: 'smooth'
                     });
                 }
             }
-            // Handle cross-page anchors (e.g., index.html#about or ../index.html#about)
+            // Handle cross-page anchors (index.html#about)
             else if (href.includes('#')) {
-                const pathParts = href.split('#');
-                const targetPath = pathParts[0];
-                const targetAnchor = pathParts[1];
+                const parts = href.split('#');
+                const pagePath = parts[0];
+                const anchorId = parts[1];
 
                 const currentPath = window.location.pathname;
 
-                // If we are already on the target page, just smooth scroll
-                if (currentPath.endsWith(targetPath) || (targetPath === 'index.html' && currentPath.endsWith('/'))) {
-                    const targetElement = document.getElementById(targetAnchor);
+                // Check if we're on the landing page or explicitly index.html
+                if (currentPath.endsWith(pagePath) || (pagePath === 'index.html' && (currentPath.endsWith('/') || currentPath.endsWith('/index.html')))) {
+                    const targetElement = document.getElementById(anchorId);
                     if (targetElement) {
                         e.preventDefault();
+                        const offset = window.innerWidth <= 1024 ? 80 : 20;
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80,
+                            top: targetElement.offsetTop - offset,
                             behavior: 'smooth'
                         });
                     }
@@ -63,28 +62,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // 3. Reveal animations on scroll
-    const sections = document.querySelectorAll('section, .glass-card');
-
-    const revealOnScroll = () => {
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            if (rect.top <= windowHeight * 0.85) {
-                section.style.opacity = '1';
-                section.style.transform = 'translateY(0)';
-            }
-        });
-    };
-
-    // Initial styles for animation
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-    });
-
-    window.addEventListener('scroll', revealOnScroll);
-    setTimeout(revealOnScroll, 100); // Trigger once on load with slight delay
 });
