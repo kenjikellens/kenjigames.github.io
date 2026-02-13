@@ -343,13 +343,10 @@ h3,
     transform: scaleX(1);
 }
 
-.btn-primary {
-    /* Primary buttons now share the same glassy base */
-}
+/* Button variations (can be used for specific adjustments if needed) */
+.btn-primary {}
 
-.btn-secondary {
-    /* Secondary buttons now share the same glassy base */
-}
+.btn-secondary {}
 
 /* Glass Cards */
 .glass-card {
