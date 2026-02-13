@@ -27,7 +27,10 @@ body {
     line-height: 1.6;
 }
 
-h1, h2, h3, .logo-text {
+h1,
+h2,
+h3,
+.logo-text {
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
 }
@@ -132,7 +135,8 @@ h1, h2, h3, .logo-text {
     opacity: 1;
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover,
+.nav-links a.active {
     color: white;
     background: rgba(255, 255, 255, 0.05);
 }
@@ -167,7 +171,6 @@ h1, h2, h3, .logo-text {
 
 .social-icons a:hover i {
     color: var(--primary-blue);
-    transform: translateY(-3px);
 }
 
 /* Main Content Styling */
@@ -225,8 +228,15 @@ h1, h2, h3, .logo-text {
 }
 
 @keyframes pulse {
-    0% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
-    100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.2); }
+    0% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
 }
 
 .hero-content {
@@ -256,12 +266,29 @@ h1, h2, h3, .logo-text {
 }
 
 @keyframes noise {
-    0% { clip: rect(10px, 9999px, 80px, 0); }
-    20% { clip: rect(40px, 9999px, 60px, 0); }
-    40% { clip: rect(10px, 9999px, 20px, 0); }
-    60% { clip: rect(70px, 9999px, 90px, 0); }
-    80% { clip: rect(30px, 9999px, 50px, 0); }
-    100% { clip: rect(0, 9999px, 100px, 0); }
+    0% {
+        clip: rect(10px, 9999px, 80px, 0);
+    }
+
+    20% {
+        clip: rect(40px, 9999px, 60px, 0);
+    }
+
+    40% {
+        clip: rect(10px, 9999px, 20px, 0);
+    }
+
+    60% {
+        clip: rect(70px, 9999px, 90px, 0);
+    }
+
+    80% {
+        clip: rect(30px, 9999px, 50px, 0);
+    }
+
+    100% {
+        clip: rect(0, 9999px, 100px, 0);
+    }
 }
 
 .tagline {
@@ -278,36 +305,50 @@ h1, h2, h3, .logo-text {
 .btn {
     display: inline-block;
     padding: 15px 35px;
-    border-radius: 50px;
+    border-radius: 4px;
+    /* More angular for gaming feel */
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
     margin: 0 10px;
     font-family: 'Orbitron', sans-serif;
     font-size: 0.9rem;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary-violet), var(--primary-blue));
-    color: white;
-    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
-}
-
-.btn-primary:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(139, 92, 246, 0.5);
-}
-
-.btn-secondary {
     background: var(--glass);
     border: 1px solid var(--glass-border);
     color: white;
     backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
 }
 
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
+.btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-violet);
+    transform: scaleX(0);
+    transition: var(--transition);
+    box-shadow: 0 0 10px var(--primary-violet);
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn:hover::after {
+    transform: scaleX(1);
+}
+
+.btn-primary {
+    /* Primary buttons now share the same glassy base */
+}
+
+.btn-secondary {
+    /* Secondary buttons now share the same glassy base */
 }
 
 /* Glass Cards */
@@ -493,7 +534,6 @@ h1, h2, h3, .logo-text {
 .contact-link:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: var(--primary-blue);
-    transform: translateY(-3px);
 }
 
 /* Footer */
@@ -528,23 +568,23 @@ h1, h2, h3, .logo-text {
         --sidebar-width: 0px;
         --sidebar-expanded: 100%;
     }
-    
+
     .sidebar {
         width: 0;
     }
-    
+
     .sidebar.mobile-open {
         width: 100%;
     }
-    
+
     .content {
         margin-left: 0;
     }
-    
+
     .youtube-showcase {
         grid-template-columns: 1fr;
     }
-    
+
     .glitch {
         font-size: 4rem;
     }
