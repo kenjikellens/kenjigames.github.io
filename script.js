@@ -1,34 +1,70 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Navigation Active Link Handling
+    // 1. Sidebar Mobile Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.querySelector('.sidebar');
+    const appContainer = document.querySelector('.app-container');
+
+    if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sidebar.classList.toggle('active');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && e.target !== menuToggle) {
+                sidebar.classList.remove('active');
+            }
+        });
+    }
+
+    // 2. Navigation Handling (Directory Agnostic)
     const navLinks = document.querySelectorAll('.nav-link');
 
-    // Simple smooth scroll for internal links
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
 
-            // If it's a cross-page link (starts with projects/ or index.html)
-            if (href.startsWith('projects/') || (href.startsWith('index.html') && !href.includes('#'))) {
-                return; // Let browser navigate
+            // Close sidebar on mobile after clicking a link
+            if (sidebar && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
             }
 
-            // Handle internal anchors
-            if (href.includes('#')) {
-                const targetId = href.split('#')[1];
-                const targetElement = document.getElementById(targetId);
-
+            // Handle internal anchors on the SAME page
+            if (href.startsWith('#')) {
+                const targetElement = document.getElementById(href.substring(1));
                 if (targetElement) {
                     e.preventDefault();
                     window.scrollTo({
-                        top: targetElement.offsetTop,
+                        top: targetElement.offsetTop - 80, // Offset for mobile header
                         behavior: 'smooth'
                     });
+                }
+            }
+            // Handle cross-page anchors (e.g., index.html#about or ../index.html#about)
+            else if (href.includes('#')) {
+                const pathParts = href.split('#');
+                const targetPath = pathParts[0];
+                const targetAnchor = pathParts[1];
+
+                const currentPath = window.location.pathname;
+
+                // If we are already on the target page, just smooth scroll
+                if (currentPath.endsWith(targetPath) || (targetPath === 'index.html' && currentPath.endsWith('/'))) {
+                    const targetElement = document.getElementById(targetAnchor);
+                    if (targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             }
         });
     });
 
-    // 2. Reveal animations on scroll
+    // 3. Reveal animations on scroll
     const sections = document.querySelectorAll('section, .glass-card');
 
     const revealOnScroll = () => {
@@ -50,5 +86,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Trigger once on load
+    setTimeout(revealOnScroll, 100); // Trigger once on load with slight delay
 });
