@@ -105,11 +105,6 @@ body {
     border-radius: 6px;
 }
 
-.theme-switch:hover {
-    color: var(--primary-accent);
-    background-color: var(--nav-hover-bg);
-}
-
 .nav-list {
     flex: 1;
     padding: 12px 12px;
@@ -138,11 +133,6 @@ body {
     font-size: 0.9rem;
 }
 
-.nav-link:hover {
-    color: var(--text-main);
-    background-color: var(--nav-hover-bg);
-}
-
 .nav-link.active {
     color: var(--nav-active-text);
     background-color: var(--nav-active-bg);
@@ -160,10 +150,6 @@ body {
     color: var(--text-dim);
     font-size: 1.1rem;
     transition: var(--transition);
-}
-
-.footer-icon:hover {
-    color: var(--primary-accent);
 }
 
 /* Mobile Header */
@@ -259,10 +245,6 @@ p {
     padding: 24px;
     backdrop-filter: blur(8px);
     transition: var(--transition);
-}
-
-.info-card:hover {
-    border-color: var(--primary-accent);
 }
 
 /* GLASS BUTTONS - CUSTOM SPEC */
