@@ -247,13 +247,13 @@ p {
     transition: var(--transition);
 }
 
-/* GLASS BUTTONS - CUSTOM SPEC */
+/* UNIFIED BUTTON SYSTEM - MINIMALIST GLASS-GREEN */
 .btn-standard {
     display: inline-flex;
     align-items: center;
     padding: 10px 24px;
-    background: rgba(16, 185, 129, 0.15);
-    /* Clearly visible background */
+    background: rgba(16, 185, 129, 0.12);
+    /* Visible glass background */
     color: var(--text-main);
     text-decoration: none;
     font-weight: 600;
@@ -261,29 +261,44 @@ p {
     transition: var(--transition);
     gap: 8px;
     border: none;
-    border-bottom: 2px solid transparent;
     cursor: pointer;
     backdrop-filter: blur(12px);
-    /* High-end glass effect */
     -webkit-backdrop-filter: blur(12px);
     width: fit-content;
     border-radius: 4px;
+    position: relative;
+    /* For broadening border */
+}
+
+/* Persistent but narrowing border */
+.btn-standard::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 40px;
+    /* Initially narrow but visible */
+    height: 2px;
+    background: var(--primary-accent);
+    transform: translateX(-50%);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.8;
 }
 
 .btn-standard:hover {
-    background: rgba(16, 185, 129, 0.1);
-    border-bottom-color: var(--primary-accent);
-    /* Border becomes visible */
+    background: rgba(16, 185, 129, 0.2);
     color: var(--primary-accent);
 }
 
-.btn-outline {
-    background: transparent;
-    border-bottom: 1px solid var(--border-color);
+.btn-standard:hover::after {
+    width: 100%;
+    /* Broadens on hover to full width */
+    opacity: 1;
 }
 
-.btn-outline:hover {
-    border-bottom-color: var(--primary-accent);
+/* btn-outline is now retired, if used in HTML it will look like btn-standard */
+.btn-outline {
+    background: rgba(16, 185, 129, 0.1) !important;
 }
 
 .type-badge {
