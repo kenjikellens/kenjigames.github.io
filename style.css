@@ -145,6 +145,29 @@ body {
     max-width: 800px;
 }
 
+.slide h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -2px;
+}
+
+.slide h1 span {
+    color: var(--primary);
+}
+
+.slide p {
+    font-size: 1.25rem;
+    color: var(--text-dim);
+    margin-bottom: 48px;
+    /* Added spacing */
+}
+
+.hero-btns {
+    margin-top: 10px;
+}
+
 .badge {
     display: inline-block;
     padding: 6px 14px;
