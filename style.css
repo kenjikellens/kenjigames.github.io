@@ -35,11 +35,15 @@ body {
     width: 100%;
     height: var(--header-h);
     z-index: 1000;
-    backdrop-filter: blur(20px);
-    background: rgba(10, 10, 11, 0.8);
-    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(24px);
+    /* Increased blur */
+    background: rgba(10, 10, 11, 0.75);
+    /* More transparent for glass effect */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    /* Sophisticated glass border */
     display: flex;
     align-items: center;
+    transition: all 0.4s ease;
 }
 
 .header-content {
@@ -64,6 +68,8 @@ body {
 .nav-links {
     display: flex;
     gap: 32px;
+    align-items: center;
+    /* Ensures dropdown and links are level */
 }
 
 .nav-item {
