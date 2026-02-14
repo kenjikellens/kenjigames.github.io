@@ -4,109 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Channels | KenjiGames Network</title>
+    <title>YouTube Channels | Kenji Network</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="app-wrapper">
-        <!-- Mobile Navigation Header -->
-        <header class="mobile-nav">
-            <a href="index.html" class="sidebar-logo">KenjiGames</a>
-            <button class="menu-trigger" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </header>
-
-        <!-- Fixed Sidebar -->
-        <nav class="sidebar" id="mainSidebar">
-            <div class="sidebar-header">
-                <a href="index.html" class="sidebar-logo">KenjiGames</a>
-                <button class="theme-switch" id="themeToggle" title="Toggle Light/Dark Mode">
-                    <i class="fas fa-moon"></i>
-                </button>
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">Kenji<span>Games</span></a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="index.html#projects" class="nav-item">Projects</a>
+                <a href="youtube.html" class="nav-item active">YouTube</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="index.html#contact" class="nav-item">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggle" class="icon-btn"><i class="fas fa-moon"></i></button>
             </div>
+        </div>
+    </header>
 
-            <ul class="nav-list">
-                <li class="nav-item"><a href="index.html" class="nav-link"><i
-                            class="fas fa-home"></i><span>Home</span></a></li>
-                <li class="nav-item"><a href="projects/ivids.html" class="nav-link"><i
-                            class="fas fa-film"></i><span>IVIDS Movie App</span></a></li>
-                <li class="nav-item"><a href="youtube.html" class="nav-link active"><i
-                            class="fab fa-youtube"></i><span>YouTube Channels</span></a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link"><i class="fas fa-user-tie"></i><span>About
-                            Kenji</span></a></li>
-                <li class="nav-item"><a href="index.html#contact" class="nav-link"><i
-                            class="fas fa-envelope"></i><span>Contact</span></a></li>
-            </ul>
+    <main style="padding-top: 120px;">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge">Kenji Content Network</span>
+                    <h1>The <span>YouTube Channels</span></h1>
+                    <p>Explore our four dedicated platforms covering everything from engineering to cinematic gaming.
+                    </p>
+                </div>
 
-            <div class="sidebar-footer">
-                <a href="https://github.com/kenjikellens" target="_blank" class="footer-icon"><i
-                        class="fab fa-github"></i></a>
-                <a href="https://www.youtube.com/channel/UCv1f4AvA8o0d9v9xD7e54zw" target="_blank"
-                    class="footer-icon"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.instagram.com/kenji.kellens/" target="_blank" class="footer-icon"><i
-                        class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/kenji.kellens" target="_blank" class="footer-icon"><i
-                        class="fab fa-facebook"></i></a>
-            </div>
-        </nav>
-
-        <!-- Main Content Area -->
-        <main class="main-area">
-            <div class="page-container">
-                <header class="hero-block">
-                    <h1>The Kenji Network</h1>
-                    <p class="hero-subtitle">Official YouTube aggregation page for the various content initiatives led
-                        by Kenji.</p>
-                </header>
-
-                <section class="section">
-                    <h2>Content Channels</h2>
-                    <div class="grid-layout">
-                        <article class="info-card">
-                            <span class="type-badge">Primary</span>
+                <div class="grid-layout"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
+                    <div class="product-showcase">
+                        <div class="showcase-info">
                             <h3>KenjiGames</h3>
-                            <p>Technical breakdowns, gaming tools, and software development insights.</p>
-                            <a href="https://www.youtube.com/channel/UCv1f4AvA8o0d9v9xD7e54zw" target="_blank"
-                                class="btn-standard">Visit Channel</a>
-                        </article>
-
-                        <article class="info-card">
-                            <span class="type-badge">Passion Project</span>
-                            <h3>KenjiCoasters</h3>
-                            <p>Dedicated coverage and technical overviews of theme park engineering and rollercoasters.
-                            </p>
-                            <a href="https://www.youtube.com/@kenjicoasters" target="_blank" class="btn-standard">Visit
-                                Channel</a>
-                        </article>
-
-                        <article class="info-card">
-                            <span class="type-badge">Entertainment</span>
-                            <h3>KenjiXtra</h3>
-                            <p>Behind-the-scenes content, Vlogs, and additional gameplay material.</p>
-                            <a href="https://www.youtube.com/@kenjixtra" target="_blank" class="btn-standard">Visit
-                                Channel</a>
-                        </article>
-
-                        <article class="info-card">
-                            <span class="type-badge">Creative</span>
-                            <h3>KenjiProductions</h3>
-                            <p>High-fidelity video productions, cinematic edits, and creative media projects.</p>
-                            <a href="https://www.youtube.com/@kenjiproductions" target="_blank"
-                                class="btn-standard">Visit Channel</a>
-                        </article>
+                            <p>Technical breakdowns and gaming software development.</p>
+                            <a href="#" class="btn">Visit Channel</a>
+                        </div>
                     </div>
-                </section>
-
-                <footer
-                    style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-dim); font-size: 0.9rem; text-align: center;">
-                    <p>&copy; 2026 KenjiGames. All rights reserved.</p>
-                </footer>
+                    <div class="product-showcase">
+                        <div class="showcase-info">
+                            <h3>KenjiCoasters</h3>
+                            <p>Engineering and overviews of theme park logic.</p>
+                            <a href="#" class="btn">Visit Channel</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </main>
-    </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>

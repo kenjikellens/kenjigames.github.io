@@ -1,94 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Sidebar Toggle Logic
-    const menuBtn = document.getElementById('mobileMenuBtn');
-    const sidebar = document.getElementById('mainSidebar');
+    const slider = document.getElementById('heroSlider');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+    const totalSlides = dots.length;
 
-    if (menuBtn && sidebar) {
-        menuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            sidebar.classList.toggle('visible');
-        });
-
-        // Close sidebar on document click (outside sidebar)
-        document.addEventListener('click', (e) => {
-            if (sidebar.classList.contains('visible') && !sidebar.contains(e.target) && e.target !== menuBtn) {
-                sidebar.classList.remove('visible');
-            }
-        });
+    // 1. Slider Functionality
+    function goToSlide(index) {
+        slider.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+        currentSlide = index;
     }
 
-    // 2. Navigation & Smooth Scrolling
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
-
-            // Close mobile menu on navigate
-            if (sidebar) sidebar.classList.remove('visible');
-
-            // Handle internal anchors on the same page
-            if (href.startsWith('#')) {
-                const targetElement = document.getElementById(href.substring(1));
-                if (targetElement) {
-                    e.preventDefault();
-                    const offset = window.innerWidth <= 1024 ? 80 : 20;
-                    window.scrollTo({
-                        top: targetElement.offsetTop - offset,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-            // Handle cross-page anchors (index.html#about)
-            else if (href.includes('#')) {
-                const parts = href.split('#');
-                const pagePath = parts[0];
-                const anchorId = parts[1];
-
-                const currentPath = window.location.pathname;
-
-                // Check if we're on the landing page or explicitly index.html
-                if (currentPath.endsWith(pagePath) || (pagePath === 'index.html' && (currentPath.endsWith('/') || currentPath.endsWith('/index.html')))) {
-                    const targetElement = document.getElementById(anchorId);
-                    if (targetElement) {
-                        e.preventDefault();
-                        const offset = window.innerWidth <= 1024 ? 80 : 20;
-                        window.scrollTo({
-                            top: targetElement.offsetTop - offset,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            }
-        });
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
     });
-    // 3. Theme Switching Logic
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
 
-    if (themeToggle && themeIcon) {
-        // Apply saved theme
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
+    // Autoplay Slider
+    setInterval(() => {
+        let next = (currentSlide + 1) % totalSlides;
+        goToSlide(next);
+    }, 6000);
 
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-    }
-
-    function updateThemeIcon(theme) {
-        if (theme === 'dark') {
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+    // 2. Header Scroll Effect
+    const header = document.querySelector('.main-header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.style.padding = '10px 0';
+            header.style.background = 'rgba(10, 10, 11, 0.95)';
         } else {
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
+            header.style.padding = '0';
+            header.style.background = 'rgba(10, 10, 11, 0.8)';
         }
-    }
+    });
 });

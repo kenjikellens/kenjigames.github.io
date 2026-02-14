@@ -4,161 +4,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KenjiGames | Professional Software & Gaming Hub</title>
-    <meta name="description" content="KenjiGames - Professional software development and gaming project hub.">
+    <title>KenjiGames | Official Hub</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="app-wrapper">
-        <!-- Mobile Navigation Header -->
-        <header class="mobile-nav">
-            <a href="index.html" class="sidebar-logo">KenjiGames</a>
-            <button class="menu-trigger" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </header>
+    <!-- Sticky Header -->
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">Kenji<span>Games</span></a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item active">Home</a>
+                <a href="#projects" class="nav-item">Projects</a>
+                <a href="youtube.html" class="nav-item">YouTube</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggle" class="icon-btn"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
 
-        <!-- Fixed Sidebar -->
-        <nav class="sidebar" id="mainSidebar">
-            <div class="sidebar-header">
-                <a href="index.html" class="sidebar-logo">KenjiGames</a>
-                <button class="theme-switch" id="themeToggle" title="Toggle Light/Dark Mode">
-                    <i class="fas fa-moon"></i>
-                </button>
+    <!-- 4-Slide Hero Slider -->
+    <section class="hero-slider">
+        <div class="slides-container" id="heroSlider">
+            <!-- Slide 1: Welcome -->
+            <div class="slide active" data-slide="1">
+                <div class="slide-bg welcome-bg"></div>
+                <div class="container slide-content">
+                    <span class="badge">Official Portal</span>
+                    <h1>Welcome to the <span>Kenji Hub</span></h1>
+                    <p>Building high-performance tools and cinematic experiences for the modern gaming era.</p>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn">Explore Projects</a>
+                    </div>
+                </div>
             </div>
 
-            <ul class="nav-list">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link active">
-                        <i class="fas fa-home"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="projects/ivids.html" class="nav-link">
-                        <i class="fas fa-film"></i>
-                        <span>IVIDS Movie App</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="youtube.html" class="nav-link">
-                        <i class="fab fa-youtube"></i>
-                        <span>YouTube Channels</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="about.html" class="nav-link">
-                        <i class="fas fa-user-tie"></i>
-                        <span>About Kenji</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">
-                        <i class="fas fa-envelope"></i>
-                        <span>Contact</span>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="sidebar-footer">
-                <a href="https://github.com/kenjikellens" target="_blank" class="footer-icon">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.youtube.com/channel/UCv1f4AvA8o0d9v9xD7e54zw" target="_blank" class="footer-icon">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://www.instagram.com/kenji.kellens/" target="_blank" class="footer-icon">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com/kenji.kellens" target="_blank" class="footer-icon">
-                    <i class="fab fa-facebook"></i>
-                </a>
+            <!-- Slide 2: YouTube -->
+            <div class="slide" data-slide="2">
+                <div class="slide-bg youtube-bg"></div>
+                <div class="container slide-content">
+                    <span class="badge">Content Network</span>
+                    <h1>The <span>Kenji Network</span></h1>
+                    <p>From technical breakdowns to creative cinematic productions across four dedicated channels.</p>
+                    <div class="hero-btns">
+                        <a href="youtube.html" class="btn">Watch Channels</a>
+                    </div>
+                </div>
             </div>
-        </nav>
 
-        <!-- Main Content Area -->
-        <main class="main-area">
-            <div class="page-container">
-                <header class="hero-block">
-                    <h1 style="font-size: 3.5rem; margin-bottom: 0.5rem;">KenjiGames</h1>
-                    <p class="hero-subtitle">A dedicated software house specializing in high-performance gaming tools,
-                        cinematic applications, and technical resources.</p>
-                </header>
-
-                <section id="mission" class="section">
-                    <h2>Our Focus</h2>
-                    <div class="info-card" style="margin-bottom: 2rem;">
-                        <p>KenjiGames balances technical precision with high-fidelity design. We build tools that
-                            empower the gaming community and applications that redefine web-based entertainment.</p>
+            <!-- Slide 3: IVIDS -->
+            <div class="slide" data-slide="3">
+                <div class="slide-bg ivids-bg"></div>
+                <div class="container slide-content">
+                    <span class="badge">Flagship Project</span>
+                    <h1>Experience <span>IVIDS</span></h1>
+                    <p>High-fidelity cinematic streaming interface designed for speed and immersion.</p>
+                    <div class="hero-btns">
+                        <a href="projects/ivids.html" class="btn">Discover IVIDS</a>
                     </div>
-                </section>
-
-                <section id="projects" class="section">
-                    <h2>Software Projects</h2>
-                    <div class="grid-layout">
-                        <article class="info-card">
-                            <span class="type-badge">Main Product</span>
-                            <h3>IVIDS</h3>
-                            <p>A flagship cinematic interface designed to bring desktop-class streaming UI performance
-                                to the browser.</p>
-                            <a href="projects/ivids.html" class="btn-standard">Explore Product <i
-                                    class="fas fa-chevron-right"></i></a>
-                        </article>
-
-                    </div>
-                </section>
-
-                <section id="youtube" class="section">
-                    <h2>Kenji Content Network</h2>
-                    <div class="info-card"
-                        style="display: flex; flex-direction: column; align-items: start; gap: 1rem;">
-                        <p>Explore our four dedicated YouTube channels covering gaming, engineering, and creative
-                            productions.</p>
-                        <a href="youtube.html" class="btn-standard">
-                            <i class="fab fa-youtube"></i> View All Channels
-                        </a>
-                    </div>
-                </section>
-
-                <section id="contact" class="section">
-                    <h2>Connect & Resources</h2>
-                    <div class="grid-layout">
-                        <article class="info-card">
-                            <h3>Development</h3>
-                            <p>Access source code and technical documentation on GitHub.</p>
-                            <a href="https://github.com/kenjikellens" target="_blank" class="btn-standard">GitHub
-                                Repos</a>
-                        </article>
-                        <article class="info-card">
-                            <h3>Social Media</h3>
-                            <p>Follow official updates on Instagram, Facebook, and YouTube.</p>
-                            <div style="display: flex; gap: 1rem;">
-                                <a href="https://www.instagram.com/kenji.kellens/" target="_blank" class="btn-standard"
-                                    title="Instagram">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="https://www.facebook.com/kenji.kellens" target="_blank" class="btn-standard"
-                                    title="Facebook">
-                                    <i class="fab fa-facebook"></i>
-                                </a>
-                                <a href="https://www.youtube.com/channel/UCv1f4AvA8o0d9v9xD7e54zw" target="_blank"
-                                    class="btn-standard" title="YouTube">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                            </div>
-                        </article>
-                    </div>
-                </section>
-
-                <footer
-                    style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-dim); font-size: 0.9rem; text-align: center;">
-                    <p>&copy; 2026 KenjiGames. All rights reserved.</p>
-                </footer>
+                </div>
             </div>
-        </main>
-    </div>
+
+            <!-- Slide 4: IVIDS Music -->
+            <div class="slide" data-slide="4">
+                <div class="slide-bg music-bg"></div>
+                <div class="container slide-content">
+                    <span class="badge">Coming Soon</span>
+                    <h1>IVIDS <span>Music</span></h1>
+                    <p>Wait for the beat. A new way to experience high-fidelity audio on the web.</p>
+                    <div class="hero-btns">
+                        <a href="#" class="btn btn-disabled">Notify Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="slider-nav">
+            <button class="dot active" data-target="1"></button>
+            <button class="dot" data-target="2"></button>
+            <button class="dot" data-target="3"></button>
+            <button class="dot" data-target="4"></button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Projects</h2>
+                    <p>Carefully crafted software solutions for gamers and developers.</p>
+                </div>
+                <div class="projects-grid">
+                    <!-- IVIDS Card -->
+                    <div class="product-showcase">
+                        <div class="showcase-info">
+                            <h3>IVIDS Movie App</h3>
+                            <p>Hand-crafted technical precision meets cinematic design.</p>
+                            <a href="projects/ivids.html" class="btn">Explore Product</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section alternate">
+            <div class="container">
+                <div class="contact-card">
+                    <h2>Connect with Kenji</h2>
+                    <p>Follow our journey across platforms and access our open-source repositories.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
