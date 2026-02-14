@@ -251,9 +251,9 @@ p {
 .btn-standard {
     display: inline-flex;
     align-items: center;
-    padding: 10px 20px;
-    background: rgba(16, 185, 129, 0.05);
-    /* Translucent background */
+    padding: 10px 24px;
+    background: rgba(16, 185, 129, 0.15);
+    /* Clearly visible background */
     color: var(--text-main);
     text-decoration: none;
     font-weight: 600;
@@ -262,9 +262,10 @@ p {
     gap: 8px;
     border: none;
     border-bottom: 2px solid transparent;
-    /* Bottom border hidden by default */
     cursor: pointer;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(12px);
+    /* High-end glass effect */
+    -webkit-backdrop-filter: blur(12px);
     width: fit-content;
     border-radius: 4px;
 }
