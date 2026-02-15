@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About 2 | KenjiGames</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">Kenji<span>Games</span></a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <div class="dropdown">
+                    <a href="index.html#projects" class="nav-item">Projects <i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem; margin-left: 4px;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="projects/ivids.html">IVIDS</a>
+                        <a href="projects/ivids-music.html">IVIDS Music</a>
+                    </div>
+                </div>
+                <a href="youtube.html" class="nav-item">YouTube</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="index.html#contact" class="nav-item">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggle" class="icon-btn"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main
+        style="padding-top: 15vh; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; text-align: center;">
+        <div class="container">
+            <h1 style="font-size: 3rem; margin-bottom: 20px;">About 2</h1>
+            <p style="color: var(--text-dim); margin-bottom: 40px;">This is a secondary about page as requested.</p>
+            <a href="index.html" class="btn">Return Home</a>
+        </div>
+    </main>
+
+    <script>
+        // Header Scroll Effect (embedded as in index.html)
+        const header = document.querySelector('.main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 0';
+                header.style.background = 'rgba(10, 10, 11, 0.95)';
+            } else {
+                header.style.padding = '0';
+                header.style.background = 'rgba(10, 10, 11, 0.8)';
+            }
+        });
+    </script>
+</body>
+
+</html>
