@@ -11,28 +11,7 @@
 </head>
 
 <body>
-    <header class="main-header">
-        <div class="container header-content">
-            <a href="index.html" class="logo">Kenji<span>Games</span></a>
-            <nav class="nav-links">
-                <a href="index.html" class="nav-item">Home</a>
-                <div class="dropdown">
-                    <a href="index.html#projects" class="nav-item">Projects <i class="fas fa-chevron-down"
-                            style="font-size: 0.7rem; margin-left: 4px;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="projects/ivids.html">IVIDS</a>
-                        <a href="projects/ivids-music.html">IVIDS Music</a>
-                    </div>
-                </div>
-                <a href="youtube.html" class="nav-item active">YouTube</a>
-                <a href="about.html" class="nav-item">About</a>
-                <a href="index.html#contact" class="nav-item">Contact</a>
-            </nav>
-            <div class="header-actions">
-                <button id="themeToggle" class="icon-btn"><i class="fas fa-moon"></i></button>
-            </div>
-        </div>
-    </header>
+    <header-component></header-component>
 
     <main style="padding-top: 15vh; min-height: 80vh;">
         <div class="container">
@@ -43,49 +22,49 @@
             </div>
 
             <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 80px;">
-                <!-- Kenji Productions -->
+                <!-- KenjiGames Productions -->
                 <div class="product-showcase">
                     <div class="showcase-info">
                         <div class="channel-icon" style="width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
                             <i class="fas fa-film" style="color: var(--primary); font-size: 1.5rem;"></i>
                         </div>
-                        <h3>Kenji Productions</h3>
+                        <h3>KenjiGames Productions</h3>
                         <p>Main creative productions and cinematic experiences.</p>
                         <a href="https://www.youtube.com/@kenjiproductions" target="_blank" class="btn">Visit Channel</a>
                     </div>
                 </div>
 
-                <!-- Kenji Games Net -->
+                <!-- KenjiGames Net -->
                 <div class="product-showcase">
                     <div class="showcase-info">
                         <div class="channel-icon" style="width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
                             <i class="fas fa-gamepad" style="color: var(--primary); font-size: 1.5rem;"></i>
                         </div>
-                        <h3>Kenji Games Net</h3>
+                        <h3>KenjiGames Net</h3>
                         <p>Gaming content, technical breakdowns, and software dev.</p>
                         <a href="https://www.youtube.com/@kenjigamesnet" target="_blank" class="btn">Visit Channel</a>
                     </div>
                 </div>
 
-                <!-- Kenji Xtra -->
+                <!-- KenjiGames Xtra -->
                 <div class="product-showcase">
                     <div class="showcase-info">
                         <div class="channel-icon" style="width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
                             <i class="fas fa-plus-circle" style="color: var(--primary); font-size: 1.5rem;"></i>
                         </div>
-                        <h3>Kenji Xtra</h3>
+                        <h3>KenjiGames Xtra</h3>
                         <p>Behind-the-scenes, vlogs, and extra creative content.</p>
                         <a href="https://www.youtube.com/@kenjixtra" target="_blank" class="btn">Visit Channel</a>
                     </div>
                 </div>
 
-                <!-- Kenji Coasters -->
+                <!-- KenjiGames Coasters -->
                 <div class="product-showcase">
                     <div class="showcase-info">
                         <div class="channel-icon" style="width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
                             <i class="fas fa-train" style="color: var(--primary); font-size: 1.5rem;"></i>
                         </div>
-                        <h3>Kenji Coasters</h3>
+                        <h3>KenjiGames Coasters</h3>
                         <p>Theme park adventures and high-speed roller coaster POVs.</p>
                         <a href="https://www.youtube.com/@kenjicoasters" target="_blank" class="btn">Visit Channel</a>
                     </div>
@@ -98,7 +77,9 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <footer-component></footer-component>
+
+    <script src="js/components.js"></script>
 </body>
 
 </html>

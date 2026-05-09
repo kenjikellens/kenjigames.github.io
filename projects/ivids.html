@@ -11,28 +11,7 @@
 </head>
 
 <body>
-    <header class="main-header">
-        <div class="container header-content">
-            <a href="../index.html" class="logo">Kenji<span>Games</span></a>
-            <nav class="nav-links">
-                <a href="../index.html" class="nav-item">Home</a>
-                <div class="dropdown">
-                    <a href="#" class="nav-item active">Projects <i class="fas fa-chevron-down"
-                            style="font-size: 0.7rem; margin-left: 4px;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="ivids.html" class="active">IVIDS</a>
-                        <a href="ivids-music.html">IVIDS Music</a>
-                    </div>
-                </div>
-                <a href="../youtube.html" class="nav-item">YouTube</a>
-                <a href="../about.html" class="nav-item">About</a>
-                <a href="../index.html#contact" class="nav-item">Contact</a>
-            </nav>
-            <div class="header-actions">
-                <button id="themeToggle" class="icon-btn"><i class="fas fa-moon"></i></button>
-            </div>
-        </div>
-    </header>
+    <header-component></header-component>
 
     <main style="padding-top: 15vh;">
         <section class="section">
@@ -43,7 +22,7 @@
                     <p>The native-class cinematic interface for modern browsers.</p>
                 </div>
 
-                <div class="content-block">
+                <div class="content-block" style="margin-bottom: 80px;">
                     <p style="font-size: 1.25rem; color: var(--text-dim); margin-bottom: 32px; max-width: 800px;">
                         IVIDS was born from a pursuit of removing the "web barrier" in content consumption.
                         Traditionally, browser-based streaming feels detached and sluggish. IVIDS reimagines this
@@ -56,9 +35,82 @@
                 </div>
             </div>
         </section>
+
+        <section class="project-details">
+            <div class="container">
+                <div class="details-grid">
+                    <div class="details-content">
+                        <h2>The Pursuit of Immersive Streaming</h2>
+                        <p>
+                            IVIDS was born from a singular vision: to bridge the gap between the sluggishness of traditional web browsers and the fluidity of native desktop applications. In the modern era of high-speed fiber optics, the bottleneck for content consumption is no longer the data transfer, but the interface through which we interact with it.
+                        </p>
+                        <p>
+                            Traditionally, browser-based streaming platforms feel detached. They are often bogged down by heavy frameworks, intrusive tracking scripts, and inefficient rendering patterns that cause micro-stutters during navigation. IVIDS reimagines this experience by prioritizing "native-class" performance, ensuring that every interaction—from a subtle hover to a complex transition—occurs at a locked 60 frames per second.
+                        </p>
+                    </div>
+                    <div class="details-features">
+                        <div class="feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <div class="feature-text">
+                                <h4>Hardware Accelerated</h4>
+                                <p>Uses GPU-driven transitions for silky smooth animations that feel instantaneous.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-expand"></i>
+                            <div class="feature-text">
+                                <h4>Immersive Layout</h4>
+                                <p>A edge-to-edge design language that eliminates distractions and focuses on the content.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-code"></i>
+                            <div class="feature-text">
+                                <h4>Vanilla Core</h4>
+                                <p>Zero external libraries. Built entirely with pure JS for maximum speed and control.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>Technical Architecture</h2>
+                <p>
+                    The technical foundation of IVIDS is built on a "Zero-Library" philosophy. By avoiding heavy frameworks like React or Vue, we eliminate the reconciliation overhead and large bundle sizes that typically plague modern web apps. Instead, IVIDS uses a custom-built observer-based state management system that directly manipulates the DOM in response to user actions.
+                </p>
+                <h3>Hardware-Accelerated Pipeline</h3>
+                <p>
+                    Every transition in IVIDS is carefully engineered to run on the browser's compositor thread. By restricting animations to properties like `opacity` and `transform`, we ensure that the main thread is never blocked, preventing the jank and lag commonly found on content-heavy websites. This is particularly noticeable during the project's signature "cinematic sweep" navigation, where multi-layered elements move in harmony.
+                </p>
+                <h3>Dynamic Metadata Harvesting</h3>
+                <p>
+                    Under the hood, IVIDS utilizes a sophisticated asynchronous fetching engine. Metadata is harvested in small, manageable fragments, ensuring that the initial page load is incredibly fast. As the user navigates, the engine intelligently predicts the next likely action and pre-fetches the necessary assets, creating an experience that feels like the content is already there.
+                </p>
+                
+                <h3>Technical Stack</h3>
+                <ul class="tech-stack-list">
+                    <li class="tech-tag">HTML5 Canvas</li>
+                    <li class="tech-tag">Vanilla JavaScript (ES6+)</li>
+                    <li class="tech-tag">CSS Grid & Flexbox</li>
+                    <li class="tech-tag">Asynchronous Fetch API</li>
+                    <li class="tech-tag">GPU Compositing</li>
+                    <li class="tech-tag">Observer Pattern</li>
+                </ul>
+
+                <h3>Future Roadmap</h3>
+                <p>
+                    The evolution of IVIDS continues with several key milestones on the horizon. We are currently exploring deeper integration with local media servers, allowing users to bring the IVIDS experience to their personal libraries. Additionally, work has begun on a "Cinematic Mode" which will use ambient light algorithms to extend the on-screen colors to the rest of the UI, further enhancing immersion.
+                </p>
+            </div>
+        </section>
     </main>
 
-    <script src="../script.js"></script>
+    <footer-component></footer-component>
+
+    <script src="../js/components.js"></script>
 </body>
 
 </html>

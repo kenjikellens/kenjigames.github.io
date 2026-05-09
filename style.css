@@ -20,6 +20,107 @@ body {
     font-family: var(--font);
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
+}
+
+html::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.05) 50%
+    ), linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.01),
+        rgba(0, 255, 0, 0.01),
+        rgba(0, 0, 255, 0.01)
+    );
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 2000;
+    opacity: 0.2;
+}
+
+/* —— Global ambient background (fixed, non-interactive) —— */
+body::before {
+    content: '';
+    position: fixed;
+    inset: -20%;
+    z-index: -3;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 100% 80% at 15% 20%, rgba(16, 185, 129, 0.12), transparent 55%),
+        radial-gradient(ellipse 90% 70% at 85% 75%, rgba(59, 130, 246, 0.08), transparent 50%),
+        radial-gradient(ellipse 70% 50% at 50% 100%, rgba(139, 92, 246, 0.06), transparent 45%),
+        radial-gradient(ellipse 50% 40% at 70% 15%, rgba(236, 72, 153, 0.04), transparent 40%);
+    background-size: 120% 120%;
+    animation: ambient-drift 28s ease-in-out infinite alternate;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 85% 70% at 50% 45%, #000 15%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 45%, #000 15%, transparent 72%);
+    animation: grid-breathe 14s ease-in-out infinite;
+    opacity: 0.85;
+}
+
+@keyframes ambient-drift {
+    0% {
+        background-position: 0% 0%;
+        transform: rotate(0deg) scale(1);
+    }
+
+    33% {
+        background-position: 100% 30%;
+    }
+
+    66% {
+        background-position: 30% 100%;
+    }
+
+    100% {
+        background-position: 80% 60%;
+        transform: rotate(2deg) scale(1.03);
+    }
+}
+
+@keyframes grid-breathe {
+
+    0%,
+    100% {
+        opacity: 0.55;
+        filter: brightness(1);
+    }
+
+    50% {
+        opacity: 0.95;
+        filter: brightness(1.15);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    body::before,
+    body::after {
+        animation: none;
+    }
+
+    body::before {
+        transform: none;
+    }
 }
 
 .container {
@@ -178,22 +279,97 @@ body {
     width: 100%;
     background: #000;
     overflow: hidden;
+    isolation: isolate;
 }
 
+/* Extra depth: soft orbs behind slides (visible in letterbox / gradient areas) */
+.hero-slider::before {
+    content: '';
+    position: absolute;
+    inset: -15%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.15) 0%, transparent 42%),
+        radial-gradient(circle at 80% 70%, rgba(239, 68, 68, 0.08) 0%, transparent 38%),
+        radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 60% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 35%);
+    filter: blur(40px);
+    animation: hero-orbs 22s ease-in-out infinite alternate;
+}
+
+@keyframes hero-orbs {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translate(-3%, 4%) scale(1.08);
+        opacity: 1;
+    }
+}
+
+/* Crossfade slide container — slides stack on top of each other */
 .slides-container {
     height: 100%;
-    display: flex;
-    transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+    position: relative;
+    z-index: 1;
 }
 
+/* Individual slide — absolute-positioned, hidden by default */
 .slide {
-    min-width: 100%;
-    height: 100%;
-    position: relative;
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 0;
 }
 
+/* Active slide zooms in from slightly smaller while fading in */
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    animation: slide-enter 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Leaving slide zooms in further while fading out */
+.slide.leaving {
+    visibility: visible;
+    z-index: 1;
+    animation: slide-exit 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Zoom-in entrance: starts slightly zoomed out, scales to normal */
+@keyframes slide-enter {
+    0% {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Cinematic exit: outgoing slide zooms in and blurs while fading */
+@keyframes slide-exit {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.15);
+        filter: blur(15px);
+    }
+}
+
+/* Slide background with Ken-Burns zoom effect */
 .slide-bg {
     position: absolute;
     top: 0;
@@ -204,13 +380,284 @@ body {
     background-position: center;
     opacity: 0.5;
     filter: brightness(0.7);
+    z-index: 0;
+    transform: scale(1.0);
+    transition: transform 8s ease-out;
 }
 
-/* Hero Content */
+/* Ken-Burns: background slowly zooms in when slide is active, and stays zoomed while leaving */
+.slide.active .slide-bg,
+.slide.leaving .slide-bg {
+    transform: scale(1.08);
+}
+
+/* Per-slide animated overlays (above .slide-bg, below .slide-content) */
+.slide::before,
+.slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Slide 1 — Welcome: concentric pulse rings */
+.slide:nth-child(1)::before {
+    background: repeating-radial-gradient(circle at 35% 45%,
+            transparent 0,
+            transparent 48px,
+            rgba(16, 185, 129, 0.06) 48px,
+            rgba(16, 185, 129, 0.06) 49px);
+    animation: ring-pulse 18s ease-in-out infinite;
+    mix-blend-mode: screen;
+    opacity: 0.65;
+}
+
+.slide:nth-child(1)::after {
+    background: radial-gradient(ellipse 120% 80% at 70% 80%, rgba(16, 185, 129, 0.12), transparent 55%);
+    animation: glow-sweep 14s ease-in-out infinite alternate;
+    mix-blend-mode: soft-light;
+    opacity: 0.5;
+}
+
+@keyframes ring-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.04);
+        opacity: 0.85;
+    }
+}
+
+@keyframes glow-sweep {
+    0% {
+        transform: translate(-5%, 0);
+    }
+
+    100% {
+        transform: translate(8%, -6%);
+    }
+}
+
+/* Slide 2 — YouTube: scan + noise shimmer */
+.slide:nth-child(2)::before {
+    background: linear-gradient(transparent 48%,
+            rgba(255, 0, 0, 0.07) 50%,
+            transparent 52%);
+    background-size: 100% 180%;
+    animation: scan-sweep 6s linear infinite;
+    mix-blend-mode: screen;
+    opacity: 0.7;
+}
+
+.slide:nth-child(2)::after {
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.04) 0, transparent 2px),
+        radial-gradient(circle at 90% 60%, rgba(255, 255, 255, 0.03) 0, transparent 2px),
+        radial-gradient(circle at 40% 90%, rgba(255, 255, 255, 0.035) 0, transparent 2px);
+    background-size: 100% 100%;
+    animation: sparkle-drift 20s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes scan-sweep {
+    0% {
+        background-position: 0 -100%;
+    }
+
+    100% {
+        background-position: 0 200%;
+    }
+}
+
+@keyframes sparkle-drift {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-4%, -3%);
+    }
+}
+
+/* Slide 3 — IVIDS: diagonal tech grid */
+.slide:nth-child(3)::before {
+    background-image:
+        repeating-linear-gradient(135deg,
+            transparent,
+            transparent 18px,
+            rgba(59, 130, 246, 0.06) 18px,
+            rgba(59, 130, 246, 0.06) 19px);
+    animation: grid-slide 20s linear infinite;
+    mix-blend-mode: overlay;
+    opacity: 0.55;
+}
+
+.slide:nth-child(3)::after {
+    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15), transparent 60%);
+    animation: core-breathe 5s ease-in-out infinite;
+    mix-blend-mode: screen;
+    opacity: 0.35;
+}
+
+@keyframes grid-slide {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 400px 400px;
+    }
+}
+
+@keyframes core-breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.25;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 0.5;
+    }
+}
+
+/* Slide 4 — Music: vertical spectrum bars */
+.slide:nth-child(4)::before {
+    background: repeating-linear-gradient(90deg,
+            transparent 0,
+            transparent 14px,
+            rgba(139, 92, 246, 0.07) 14px,
+            rgba(139, 92, 246, 0.07) 15px);
+    mask-image: linear-gradient(to bottom, transparent, #000 25%, #000 75%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 25%, #000 75%, transparent);
+    animation: bars-wave 1.8s ease-in-out infinite alternate;
+    mix-blend-mode: screen;
+    opacity: 0.5;
+}
+
+.slide:nth-child(4)::after {
+    background: linear-gradient(180deg,
+            rgba(139, 92, 246, 0.2) 0%,
+            transparent 40%,
+            transparent 60%,
+            rgba(236, 72, 153, 0.12) 100%);
+    animation: hue-wave 12s ease-in-out infinite;
+    mix-blend-mode: soft-light;
+    opacity: 0.45;
+}
+
+@keyframes bars-wave {
+    0% {
+        transform: scaleY(0.88);
+        opacity: 0.35;
+    }
+
+    100% {
+        transform: scaleY(1.06);
+        opacity: 0.65;
+    }
+}
+
+@keyframes hue-wave {
+
+    0%,
+    100% {
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        filter: hue-rotate(25deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-slider::before {
+        animation: none;
+    }
+
+    .slide::before,
+    .slide::after {
+        animation: none !important;
+    }
+
+    /* Disable stagger and Ken-Burns in reduced motion */
+    .slide-bg {
+        transition: none !important;
+    }
+
+    /* Disable zoom transitions on slides */
+    .slide.active,
+    .slide.leaving {
+        animation: none !important;
+    }
+
+    .slide.active {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .slide.active .slide-content > * {
+        animation: none !important;
+        opacity: 1 !important;
+    }
+}
+
+/* Hero Content — base state: all children hidden */
 .slide-content {
     position: relative;
     z-index: 2;
     max-width: 800px;
+}
+
+/* All direct children of slide-content start invisible */
+.slide-content > * {
+    opacity: 0;
+}
+
+/* Ensure content stays visible while the parent slide fades out */
+.slide.leaving .slide-content > * {
+    opacity: 1;
+    animation: none;
+}
+
+/* Staggered reveal keyframes — blur-to-clear with fade */
+@keyframes hero-stagger {
+    0% {
+        opacity: 0;
+        filter: blur(8px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* Badge enters first (delay: 0.1s) */
+.slide.active .slide-content > .badge {
+    animation: hero-stagger 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.1s;
+}
+
+/* Heading enters second (delay: 0.35s) */
+.slide.active .slide-content > h1 {
+    animation: hero-stagger 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.35s;
+}
+
+/* Paragraph enters third (delay: 0.55s) */
+.slide.active .slide-content > p {
+    animation: hero-stagger 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.55s;
+}
+
+/* Button group enters last (delay: 0.75s) */
+.slide.active .slide-content > .hero-btns {
+    animation: hero-stagger 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.75s;
 }
 
 .slide h1 {
@@ -221,8 +668,32 @@ body {
     letter-spacing: -2px;
 }
 
-.slide h1 span {
-    color: var(--primary);
+@keyframes metallic-glint {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.slide h1 span,
+.section-header h1 span,
+.section-header h2 span {
+    background: linear-gradient(
+        120deg,
+        var(--primary) 0%,
+        var(--primary) 40%,
+        #fff 50%,
+        var(--primary) 60%,
+        var(--primary) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: metallic-glint 5s linear infinite;
+    display: inline-block;
 }
 
 .slide p {
@@ -263,8 +734,27 @@ body {
     border-radius: 4px;
     border: 1px solid var(--border);
     overflow: hidden;
-    transition: background 0.3s, border-color 0.3s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    z-index: 1;
+}
+
+/* Shimmer overlay */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.08),
+        transparent
+    );
+    transition: left 0.6s ease;
+    z-index: -1;
 }
 
 /* Thick bottom border on hover (No translate) */
@@ -280,8 +770,13 @@ body {
 }
 
 .btn:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 .btn:hover::after {
@@ -464,6 +959,288 @@ body {
 
 .section.alternate {
     background: #0c0c0e;
+    position: relative;
+    overflow: hidden;
+}
+
+.section.alternate::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160%;
+    height: 160%;
+    z-index: 0;
+    pointer-events: none;
+    background: conic-gradient(from 120deg at 50% 50%,
+            transparent 0deg,
+            rgba(16, 185, 129, 0.04) 60deg,
+            transparent 120deg,
+            rgba(59, 130, 246, 0.035) 200deg,
+            transparent 280deg);
+    animation: alternate-rotate 48s linear infinite;
+    opacity: 0.9;
+}
+
+@keyframes alternate-rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Project Detail Section Styles */
+/* Detailed overview section for project pages */
+.project-details {
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 0;
+}
+
+/* Two-column grid for project descriptions and features */
+.details-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 80px;
+    align-items: start;
+}
+
+/* Headline for project detail blocks */
+.details-content h2 {
+    font-size: 2rem;
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+/* Long-form text styling for project descriptions */
+.details-content p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+/* Container for listing key project features */
+.details-features {
+    display: grid;
+    gap: 24px;
+}
+
+/* Individual feature block with icon and text */
+.feature-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon styling for project features */
+.feature-item i {
+    color: var(--primary);
+    font-size: 1.25rem;
+    margin-top: 4px;
+}
+
+/* Title for individual features */
+.feature-text h4 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    color: #fff;
+}
+
+/* Description text for individual features */
+.feature-text p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    margin-bottom: 0;
+}
+
+@media (max-width: 992px) {
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+}
+
+/* Long-form content styling for deep-dive sections */
+.content-section {
+    padding: 80px 0;
+}
+
+/* Primary section headers within project pages */
+.content-section h2 {
+    font-size: 2.25rem;
+    margin-bottom: 32px;
+    color: var(--primary);
+    letter-spacing: -1px;
+}
+
+/* Secondary headers for technical sub-topics */
+.content-section h3 {
+    font-size: 1.5rem;
+    margin-top: 48px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Standard paragraph styling for long-form project descriptions */
+.content-section p {
+    font-size: 1.15rem;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+/* Horizontal list for showcasing technical stack */
+.tech-stack-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 24px 0;
+}
+
+/* Styled pill-shaped tag for individual technologies */
+.tech-tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dim);
+}
+
+.section .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Featured projects strip — floating geometric accents */
+#projects {
+    position: relative;
+    overflow: hidden;
+}
+
+#projects::before {
+    content: '';
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    top: -80px;
+    right: -60px;
+    border: 1px solid rgba(16, 185, 129, 0.12);
+    border-radius: 32% 68% 70% 30% / 30% 35% 65% 70%;
+    animation: blob-morph 24s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.85;
+}
+
+#projects::after {
+    content: '';
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    bottom: 10%;
+    left: 5%;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), transparent 60%);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    animation: diamond-float 18s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+}
+
+@keyframes blob-morph {
+    0% {
+        transform: rotate(0deg) scale(1);
+        border-radius: 32% 68% 70% 30% / 30% 35% 65% 70%;
+    }
+
+    100% {
+        transform: rotate(90deg) scale(1.08);
+        border-radius: 58% 42% 38% 62% / 45% 55% 45% 55%;
+    }
+}
+
+@keyframes diamond-float {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(12px, -20px) rotate(72deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .section.alternate::before {
+        animation: none;
+    }
+
+    #projects::before,
+    #projects::after {
+        animation: none;
+    }
+}
+
+/* Inner pages (no hero slider): soft moving glow behind main content */
+body:not(:has(.hero-slider)) main {
+    position: relative;
+    isolation: isolate;
+}
+
+body:not(:has(.hero-slider)) main::before {
+    content: '';
+    position: absolute;
+    inset: -25% -15%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 75% 55% at 88% 12%, rgba(16, 185, 129, 0.08), transparent 58%),
+        radial-gradient(ellipse 55% 45% at 8% 85%, rgba(139, 92, 246, 0.06), transparent 52%);
+    animation: page-main-glow 24s ease-in-out infinite alternate;
+    opacity: 0.95;
+}
+
+body:not(:has(.hero-slider)) main>* {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes page-main-glow {
+    0% {
+        opacity: 0.65;
+        transform: translate(0, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-2%, 2%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body:not(:has(.hero-slider)) main::before {
+        animation: none;
+        transform: none;
+    }
 }
 
 /* Product Showcase */
@@ -472,11 +1249,36 @@ body {
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 40px;
-    transition: border-color 0.3s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.product-showcase::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(16, 185, 129, 0.08),
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
 }
 
 .product-showcase:hover {
-    border-color: var(--primary);
+    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 
+        0 10px 30px -10px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(16, 185, 129, 0.05);
+}
+
+.product-showcase:hover::before {
+    opacity: 1;
 }
 
 .showcase-info h3 {
@@ -511,4 +1313,84 @@ body {
 
 .social-links a:hover {
     color: var(--primary);
+}
+/* Premium Footer Styling */
+.main-footer {
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid var(--border);
+    padding: 80px 0 40px;
+    margin-top: 80px;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+.footer-brand .logo {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+.footer-brand p {
+    color: var(--text-dim);
+    margin-bottom: 24px;
+    max-width: 320px;
+    line-height: 1.6;
+}
+.footer-brand .social-links {
+    display: flex;
+    justify-content: flex-start !important;
+    gap: 16px;
+    margin-top: 0;
+}
+.footer-brand .social-links a {
+    color: var(--text-dim);
+    font-size: 1.25rem;
+    transition: color 0.3s;
+}
+.footer-brand .social-links a:hover {
+    color: var(--primary);
+}
+.footer-links h4 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-links li {
+    margin-bottom: 12px;
+}
+.footer-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer-links a:hover {
+    color: var(--primary);
+}
+.footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+    text-align: center;
+}
+.footer-bottom p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+.main-header.scrolled {
+    height: 70px;
+    background: rgba(10, 10, 11, 0.95);
+    border-bottom: 1px solid var(--border);
 }

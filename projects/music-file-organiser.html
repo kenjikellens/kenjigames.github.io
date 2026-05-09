@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music File Organiser | KenjiGames</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header-component></header-component>
+
+    <main style="padding-top: 15vh;">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge">Python · Desktop</span>
+                    <h1>Music File <span>Organiser</span></h1>
+                    <p>AI-assisted renaming and tagging for messy music libraries—using Google Gemini.</p>
+                </div>
+
+                <div class="content-block" style="margin-bottom: 80px;">
+                    <p style="font-size: 1.25rem; color: var(--text-dim); margin-bottom: 32px; max-width: 800px;">
+                        Point the app at a folder of audio files; Gemini suggests artist, title, album, year, and
+                        track number from filenames and context, then updates tags and copies files into a clean
+                        structure—by artist, album, or year. Supports common formats (MP3, M4A, FLAC, and more)
+                        with a simple GUI and live log output.
+                    </p>
+                    <div class="hero-btns" style="display: flex; flex-wrap: wrap; gap: 16px;">
+                        <a href="https://github.com/kenjigamesnet/Music-File-Organiser" target="_blank"
+                            rel="noopener" class="btn">View repository</a>
+                        <a href="https://kenjigames.jouwweb.be/apps/music-file-renamer" target="_blank"
+                            rel="noopener" class="btn"
+                            style="background: transparent; border: 1px solid var(--border);">Project page</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-details">
+            <div class="container">
+                <div class="details-grid">
+                    <div class="details-content">
+                        <h2>AI-Powered Library Restoration</h2>
+                        <p>
+                            Maintaining a massive local music library is a labor of love that often turns into a logistical nightmare. Between fragmented filenames, missing metadata tags, and inconsistent folder structures, libraries can quickly become unmanageable. Music File Organiser was developed to automate this restorative process using the power of modern artificial intelligence.
+                        </p>
+                        <p>
+                            By combining robust file system operations with the predictive capabilities of Google's Gemini AI, we've created a tool that doesn't just rename files—it understands them. Whether your library consists of decades of legacy MP3s or high-fidelity FLAC archives, our system ensures that every track is perfectly tagged and filed in its rightful place.
+                        </p>
+                    </div>
+                    <div class="details-features">
+                        <div class="feature-item">
+                            <i class="fas fa-brain"></i>
+                            <div class="feature-text">
+                                <h4>Gemini AI Core</h4>
+                                <p>Leverages large language models to predict metadata from even the most fragmented filenames.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-folder-open"></i>
+                            <div class="feature-text">
+                                <h4>Dynamic Structuring</h4>
+                                <p>Automatically rebuilds your library's folder hierarchy based on Artist, Album, or Genre.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-file-audio"></i>
+                            <div class="feature-text">
+                                <h4>Atomic Tagging</h4>
+                                <p>Safely updates ID3v2.4 and Vorbis comment tags without compromising the audio data.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>Technical Architecture</h2>
+                <p>
+                    Music File Organiser is built on a high-performance Python backend, designed to handle large-scale file operations with atomic safety. The core engine utilizes a multi-threaded approach to scan directories, extract existing metadata, and communicate with the Gemini API for tag prediction.
+                </p>
+                <h3>The Power of Gemini in Metadata Prediction</h3>
+                <p>
+                    The heart of the application is the Gemini-powered prediction engine. Traditional taggers rely on exact matches against online databases, which often fail when filenames are non-standard. By utilizing an LLM, Music File Organiser can analyze the context of a filename (e.g., "01-kenjigames-track-final-v2.mp3") and intelligently deduce the artist and title by comparing it against its vast knowledge of music history.
+                </p>
+                <h3>File System Automation & Safety</h3>
+                <p>
+                    Handling thousands of personal files requires extreme caution. Our system uses a "copy-and-verify" workflow rather than "move-in-place," ensuring that original files are never compromised until the new structure is fully validated. The Python backend integrates with native OS file systems to handle special characters and long pathnames, ensuring cross-platform compatibility.
+                </p>
+                
+                <h3>Technical Stack</h3>
+                <ul class="tech-stack-list">
+                    <li class="tech-tag">Python 3.10+</li>
+                    <li class="tech-tag">Google Gemini API</li>
+                    <li class="tech-tag">Mutagen Audio Library</li>
+                    <li class="tech-tag">Tkinter GUI Framework</li>
+                    <li class="tech-tag">Multi-threaded I/O</li>
+                    <li class="tech-tag">JSON-based Mapping Engine</li>
+                </ul>
+
+                <h3>Future Roadmap</h3>
+                <p>
+                    The next iteration of Music File Organiser will introduce an "Album Art Harvester," which will automatically search for and embed high-resolution cover art based on Gemini's predicted tags. We are also working on a "Duplicate Detection" algorithm that uses acoustic fingerprinting (chromaprint) to identify identical tracks regardless of their filename or current metadata quality.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer-component></footer-component>
+
+    <script src="../js/components.js"></script>
+</body>
+
+</html>

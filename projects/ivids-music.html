@@ -11,44 +11,106 @@
 </head>
 
 <body>
-    <header class="main-header">
-        <div class="container header-content">
-            <a href="../index.html" class="logo">Kenji<span>Games</span></a>
-            <nav class="nav-links">
-                <a href="../index.html" class="nav-item">Home</a>
-                <div class="dropdown">
-                    <a href="#" class="nav-item active">Projects <i class="fas fa-chevron-down"
-                            style="font-size: 0.7rem; margin-left: 4px;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="ivids.html">IVIDS</a>
-                        <a href="ivids-music.html" class="active">IVIDS Music</a>
+    <header-component></header-component>
+
+    <main style="padding-top: 15vh;">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge">In development</span>
+                    <h1>IVIDS <span>Music</span></h1>
+                    <p>A high-fidelity audio experience for the web—listen without ads.</p>
+                </div>
+
+                <div class="content-block" style="margin-bottom: 80px;">
+                    <p style="font-size: 1.25rem; color: var(--text-dim); margin-bottom: 32px; max-width: 800px;">
+                        IVIDS Music brings the technical precision of the IVIDS ecosystem to the world of audio. 
+                        Designed for audiophiles and power users, it provides a seamless, high-performance interface 
+                        for web-based listening without the interruptions of modern platforms.
+                    </p>
+                    <div class="hero-btns">
+                        <a href="https://github.com/kenjikellens/IVIDSMusic" target="_blank" rel="noopener"
+                            class="btn">View repository</a>
                     </div>
                 </div>
-                <a href="../youtube.html" class="nav-item">YouTube</a>
-                <a href="../about.html" class="nav-item">About</a>
-                <a href="../index.html#contact" class="nav-item">Contact</a>
-            </nav>
-            <div class="header-actions">
-                <button id="themeToggle" class="icon-btn"><i class="fas fa-moon"></i></button>
             </div>
-        </div>
-    </header>
+        </section>
 
-    <main
-        style="padding-top: 15vh; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; text-align: center;">
-        <div class="container">
-            <span class="badge">Coming Soon</span>
-            <h1 style="font-size: 3.5rem; margin-bottom: 24px;">IVIDS <span>Music</span></h1>
-            <p style="color: var(--text-dim); margin-bottom: 40px; max-width: 600px; margin-inline: auto;">A
-                revolutionary high-fidelity audio platform designed for the modern web. Experience sound with cinematic
-                depth and scientific precision.</p>
-            <div class="hero-btns">
-                <a href="../index.html" class="btn">Return Home</a>
+        <section class="project-details">
+            <div class="container">
+                <div class="details-grid">
+                    <div class="details-content">
+                        <h2>High-Fidelity Audio Purity</h2>
+                        <p>
+                            Music on the web has become a cluttered experience. Between intrusive advertising, slow-loading assets, and complex algorithms that prioritize discovery over the listener's own library, the "art of listening" has been lost. IVIDS Music is a direct response to this trend.
+                        </p>
+                        <p>
+                            By taking the technical precision of the IVIDS cinematic ecosystem and applying it to audio, we've created a platform where the interface disappears, leaving only the sound. Our focus is on providing a focused, high-performance environment for audiophiles who demand both aesthetic and technical excellence from their web tools.
+                        </p>
+                    </div>
+                    <div class="details-features">
+                        <div class="feature-item">
+                            <i class="fas fa-headphones"></i>
+                            <div class="feature-text">
+                                <h4>Audiophile Focused</h4>
+                                <p>Minimal processing on the audio signal to ensure the highest possible fidelity and bit-depth.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-ban"></i>
+                            <div class="feature-text">
+                                <h4>Pure Environment</h4>
+                                <p>No ads, no tracking, no distractions. Just a clean interface dedicated to high-fidelity sound.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-microchip"></i>
+                            <div class="feature-text">
+                                <h4>Optimized Audio Core</h4>
+                                <p>Built with efficiency in mind, ensuring zero dropouts and instant response times.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>The Architecture of Sound</h2>
+                <p>
+                    IVIDS Music is engineered from the ground up to handle the complexities of high-bitrate audio in a browser environment. While many web-based players struggle with memory management and audio buffering, IVIDS Music uses a custom implementation of the Web Audio API to ensure a stable and transparent audio path.
+                </p>
+                <h3>Technical Philosophy: "Wait for the Beat"</h3>
+                <p>
+                    The core philosophy of IVIDS Music is reflected in its technical implementation: the UI should never get in the way of the music. We utilize a reactive state management system that handles playlist updates and track transitions in the background, allowing the user to browse their collection without interrupting the current stream.
+                </p>
+                <h3>Web Audio API Mastery</h3>
+                <p>
+                    Unlike standard HTML5 audio players, IVIDS Music leverages the advanced capabilities of the Web Audio API. This allows for real-time analysis and visualization of the audio signal, as well as the ability to apply custom gain and equalization without introducing digital distortion. The result is a more robust and flexible playback engine that rivals dedicated desktop players.
+                </p>
+                
+                <h3>Technical Stack</h3>
+                <ul class="tech-stack-list">
+                    <li class="tech-tag">Web Audio API</li>
+                    <li class="tech-tag">Asynchronous State Management</li>
+                    <li class="tech-tag">High-Resolution Canvas Rendering</li>
+                    <li class="tech-tag">Local Storage Caching</li>
+                    <li class="tech-tag">Vanilla JavaScript (ES6+)</li>
+                    <li class="tech-tag">CSS Variable Theming</li>
+                </ul>
+
+                <h3>Future Roadmap</h3>
+                <p>
+                    The next phase of development for IVIDS Music includes the introduction of custom real-time visualizers that respond directly to the frequency spectrum of the music. We are also working on a "Lossless Archive" integration, which will allow users to stream high-resolution audio files (FLAC, ALAC) directly through the IVIDS interface with minimal latency.
+                </p>
+            </div>
+        </section>
     </main>
 
-    <script src="../script.js"></script>
+    <footer-component></footer-component>
+
+    <script src="../js/components.js"></script>
 </body>
 
 </html>

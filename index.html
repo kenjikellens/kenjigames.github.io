@@ -12,28 +12,7 @@
 
 <body>
     <!-- Sticky Header -->
-    <header class="main-header">
-        <div class="container header-content">
-            <a href="index.html" class="logo">Kenji<span>Games</span></a>
-            <nav class="nav-links">
-                <a href="index.html" class="nav-item active">Home</a>
-                <div class="dropdown">
-                    <a href="#projects" class="nav-item">Projects <i class="fas fa-chevron-down"
-                            style="font-size: 0.7rem; margin-left: 4px;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="projects/ivids.html">IVIDS</a>
-                        <a href="projects/ivids-music.html">IVIDS Music</a>
-                    </div>
-                </div>
-                <a href="youtube.html" class="nav-item">YouTube</a>
-                <a href="about.html" class="nav-item">About</a>
-                <a href="#contact" class="nav-item">Contact</a>
-            </nav>
-            <div class="header-actions">
-                <button id="themeToggle" class="icon-btn"><i class="fas fa-moon"></i></button>
-            </div>
-        </div>
-    </header>
+    <header-component></header-component>
 
     <!-- 4-Slide Hero Slider -->
     <section class="hero-slider">
@@ -81,11 +60,11 @@
             <div class="slide" data-slide="4">
                 <div class="slide-bg music-bg"></div>
                 <div class="container slide-content">
-                    <span class="badge">Coming Soon</span>
+                    <span class="badge">In development</span>
                     <h1>IVIDS <span>Music</span></h1>
                     <p>Wait for the beat. A new way to experience high-fidelity audio on the web.</p>
                     <div class="hero-btns">
-                        <a href="#" class="btn btn-disabled">Notify Me</a>
+                        <a href="projects/ivids-music.html" class="btn">Learn more</a>
                     </div>
                 </div>
             </div>
@@ -108,13 +87,41 @@
                     <h2>Featured Projects</h2>
                     <p>Carefully crafted software solutions for gamers and developers.</p>
                 </div>
-                <div class="projects-grid">
-                    <!-- IVIDS Card -->
+                <div class="projects-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
                     <div class="product-showcase">
                         <div class="showcase-info">
                             <h3>IVIDS Movie App</h3>
                             <p>Hand-crafted technical precision meets cinematic design.</p>
                             <a href="projects/ivids.html" class="btn">Explore Product</a>
+                        </div>
+                    </div>
+                    <div class="product-showcase">
+                        <div class="showcase-info">
+                            <h3>IVIDS Music</h3>
+                            <p>Ad-free listening on the web—aligned with the IVIDS experience.</p>
+                            <a href="projects/ivids-music.html" class="btn">Explore Product</a>
+                        </div>
+                    </div>
+                    <div class="product-showcase">
+                        <div class="showcase-info">
+                            <h3>Anime Tracker</h3>
+                            <p>Franchise-aware lists, episode progress, and AniList sync.</p>
+                            <a href="projects/anime-tracker.html" class="btn">Explore Product</a>
+                        </div>
+                    </div>
+                    <div class="product-showcase">
+                        <div class="showcase-info">
+                            <h3>Music File Organiser</h3>
+                            <p>Gemini-powered metadata and tidy folders for your music library.</p>
+                            <a href="projects/music-file-organiser.html" class="btn">Explore Product</a>
+                        </div>
+                    </div>
+                    <div class="product-showcase">
+                        <div class="showcase-info">
+                            <h3>The Great Awakening</h3>
+                            <p>A high-fidelity research archive for institutional analysis.</p>
+                            <a href="projects/the-great-awakening.html" class="btn">Explore Product</a>
                         </div>
                     </div>
                 </div>
@@ -124,10 +131,11 @@
         <section id="contact" class="section alternate">
             <div class="container">
                 <div class="contact-card">
-                    <h2>Connect with Kenji</h2>
+                    <h2>Connect with KenjiGames</h2>
                     <p>Follow our journey across platforms and access our open-source repositories.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/kenjikellens" target="_blank" rel="noopener"><i
+                                class="fab fa-github"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-facebook"></i></a>
@@ -146,11 +154,29 @@
 
             if (!slider || !dots.length) return;
 
-            // 1. Slider Functionality
+            // 1. Slider Functionality — cinematic zoom crossfade
+            /** Transitions from current slide to target index with zoom-fade effect. */
             function goToSlide(index) {
-                slider.style.transform = `translateX(-${index * 100}%)`;
+                if (index === currentSlide) return;
+
+                const slides = slider.querySelectorAll('.slide');
+
+                // Add exit animation to outgoing slide
+                slides[currentSlide].classList.remove('active');
+                slides[currentSlide].classList.add('leaving');
+
+                // Clean up leaving class after animation completes (1200ms)
+                setTimeout(() => {
+                    slides.forEach(slide => slide.classList.remove('leaving'));
+                }, 1200);
+
+                // Activate new slide (triggers entrance zoom animation)
+                slides[index].classList.add('active');
+
+                // Update dots
                 dots.forEach(dot => dot.classList.remove('active'));
                 dots[index].classList.add('active');
+
                 currentSlide = index;
             }
 
@@ -186,6 +212,10 @@
             });
         });
     </script>
+
+    <footer-component></footer-component>
+
+    <script src="js/components.js"></script>
 </body>
 
 </html>
