@@ -1253,6 +1253,9 @@ body:not(:has(.hero-slider)) main>* {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 .product-showcase::before {
@@ -1281,6 +1284,12 @@ body:not(:has(.hero-slider)) main>* {
     opacity: 1;
 }
 
+.showcase-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
 .showcase-info h3 {
     font-size: 1.75rem;
     margin-bottom: 15px;
@@ -1289,6 +1298,11 @@ body:not(:has(.hero-slider)) main>* {
 .showcase-info p {
     color: var(--text-dim);
     margin-bottom: 30px;
+}
+
+.showcase-info .btn {
+    margin-top: auto;
+    align-self: center;
 }
 
 /* Contact Card */
