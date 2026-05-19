@@ -17,20 +17,17 @@
         <section class="section">
             <div class="container">
                 <div class="section-header">
-                    <span class="badge">Flagship Product</span>
+                    <span class="badge">Multi-Platform</span>
                     <h1>Experience <span>IVIDS</span></h1>
-                    <p>The native-class cinematic interface for modern browsers.</p>
+                    <p>Premium cinematic media player for Android TV, Smart TVs, Mobile, and Desktop browsers.</p>
                 </div>
 
                 <div class="content-block" style="margin-bottom: 80px;">
                     <p style="font-size: 1.25rem; color: var(--text-dim); margin-bottom: 32px; max-width: 800px;">
-                        IVIDS was born from a pursuit of removing the "web barrier" in content consumption.
-                        Traditionally, browser-based streaming feels detached and sluggish. IVIDS reimagines this
-                        through hardware-accelerated transitions and a technical aesthetic that prioritizes immersion.
+                        IVIDS is a native-class entertainment hub built to bridge the gap between sluggish web layers and TV remote inputs. Built on a modular vanilla JS architecture, it features custom spatial navigation, a bespoke page router, and full multi-platform adaptation.
                     </p>
-                    <div class="hero-btns">
-                        <a href="https://github.com/kenjikellens/IVIDS" target="_blank" class="btn">Access
-                            Repository</a>
+                    <div class="hero-btns" style="display: flex; flex-wrap: wrap; gap: 16px;">
+                        <a href="https://github.com/kenjikellens/IVIDS" target="_blank" rel="noopener" class="btn">View Repository</a>
                     </div>
                 </div>
             </div>
@@ -40,34 +37,34 @@
             <div class="container">
                 <div class="details-grid">
                     <div class="details-content">
-                        <h2>The Pursuit of Immersive Streaming</h2>
+                        <h2>The Cinematic TV & Browser Player</h2>
                         <p>
-                            IVIDS was born from a singular vision: to bridge the gap between the sluggishness of traditional web browsers and the fluidity of native desktop applications. In the modern era of high-speed fiber optics, the bottleneck for content consumption is no longer the data transfer, but the interface through which we interact with it.
+                            Traditional streaming interfaces are built primarily for desktop mouse clicks and mobile taps, leaving TV remote controllers feeling sluggish and disconnected. IVIDS was designed from the ground up to solve this. It provides a locked 60 FPS, edge-to-edge media experience optimized for Android TVs, Tizen Smart TVs, and standard web browsers alike.
                         </p>
                         <p>
-                            Traditionally, browser-based streaming platforms feel detached. They are often bogged down by heavy frameworks, intrusive tracking scripts, and inefficient rendering patterns that cause micro-stutters during navigation. IVIDS reimagines this experience by prioritizing "native-class" performance, ensuring that every interaction—from a subtle hover to a complex transition—occurs at a locked 60 frames per second.
+                            Using a strict "zero-framework" standard, the interface adapts dynamically to the host platform. Whether running inside a native Android WebView or being served over standard web protocols, IVIDS coordinates user input, network caching, and visual layouts to place content front and center.
                         </p>
                     </div>
                     <div class="details-features">
                         <div class="feature-item">
-                            <i class="fas fa-bolt"></i>
+                            <i class="fas fa-gamepad"></i>
                             <div class="feature-text">
-                                <h4>Hardware Accelerated</h4>
-                                <p>Uses GPU-driven transitions for silky smooth animations that feel instantaneous.</p>
+                                <h4>Spatial Navigation</h4>
+                                <p>Custom geometric focus manager optimized for TV remote D-pads and hardware navigation keys.</p>
                             </div>
                         </div>
                         <div class="feature-item">
-                            <i class="fas fa-expand"></i>
+                            <i class="fas fa-desktop"></i>
                             <div class="feature-text">
-                                <h4>Immersive Layout</h4>
-                                <p>A edge-to-edge design language that eliminates distractions and focuses on the content.</p>
+                                <h4>Universal Layouts</h4>
+                                <p>Adaptive structural scaling that adjusts between TV (Landscape) and Mobile (Portrait) viewports.</p>
                             </div>
                         </div>
                         <div class="feature-item">
-                            <i class="fas fa-code"></i>
+                            <i class="fas fa-language"></i>
                             <div class="feature-text">
-                                <h4>Vanilla Core</h4>
-                                <p>Zero external libraries. Built entirely with pure JS for maximum speed and control.</p>
+                                <h4>i18n Translation</h4>
+                                <p>Global translation module dynamically swap UI localizations from flat JSON files without reload.</p>
                             </div>
                         </div>
                     </div>
@@ -79,30 +76,37 @@
             <div class="container">
                 <h2>Technical Architecture</h2>
                 <p>
-                    The technical foundation of IVIDS is built on a "Zero-Library" philosophy. By avoiding heavy frameworks like React or Vue, we eliminate the reconciliation overhead and large bundle sizes that typically plague modern web apps. Instead, IVIDS uses a custom-built observer-based state management system that directly manipulates the DOM in response to user actions.
+                    By refusing the heavy overhead of large frameworks, IVIDS relies on core ES Modules and DOM observer patterns to maintain clean rendering pipelines and instant feedback loops.
                 </p>
-                <h3>Hardware-Accelerated Pipeline</h3>
+                <h3>Bespoke SPA Router</h3>
                 <p>
-                    Every transition in IVIDS is carefully engineered to run on the browser's compositor thread. By restricting animations to properties like `opacity` and `transform`, we ensure that the main thread is never blocked, preventing the jank and lag commonly found on content-heavy websites. This is particularly noticeable during the project's signature "cinematic sweep" navigation, where multi-layered elements move in harmony.
+                    Navigation is driven by a custom Single Page Application (SPA) routing engine (`router.js`). HTML partials are fetched from the `pages/` folder on demand, and page-specific JS modules are imported asynchronously (e.g., `pages/home.js`). This enables sub-millisecond page transitions and keeps memory footprints tiny.
                 </p>
-                <h3>Dynamic Metadata Harvesting</h3>
+                <h3>D-Pad Focus Engine</h3>
                 <p>
-                    Under the hood, IVIDS utilizes a sophisticated asynchronous fetching engine. Metadata is harvested in small, manageable fragments, ensuring that the initial page load is incredibly fast. As the user navigates, the engine intelligently predicts the next likely action and pre-fetches the necessary assets, creating an experience that feels like the content is already there.
+                    To achieve a native TV feel, the Spatial Navigation system tracks visible `.focusable` DOM items. It maps hardware arrow key strokes to calculate geometric proximity, auto-scrolling focused cards into center-screen position and adapting focus paths depending on device orientation.
+                </p>
+                <h3>Platform Execution & APKs</h3>
+                <p>
+                    The codebase compiles directly into a native Android application package (`IVIDS.apk`) for immediate deployment to Android devices or Android TVs, while remaining fully hostable via any lightweight HTTP server for browser access.
                 </p>
                 
                 <h3>Technical Stack</h3>
                 <ul class="tech-stack-list">
-                    <li class="tech-tag">HTML5 Canvas</li>
-                    <li class="tech-tag">Vanilla JavaScript (ES6+)</li>
+                    <li class="tech-tag">Vanilla JavaScript (ES6+ Modules)</li>
+                    <li class="tech-tag">Spatial Navigation Engine</li>
+                    <li class="tech-tag">Custom SPA HTML Router</li>
+                    <li class="tech-tag">i18n Localization</li>
+                    <li class="tech-tag">Android Gradle / Kotlin Wrapper</li>
                     <li class="tech-tag">CSS Grid & Flexbox</li>
-                    <li class="tech-tag">Asynchronous Fetch API</li>
-                    <li class="tech-tag">GPU Compositing</li>
-                    <li class="tech-tag">Observer Pattern</li>
                 </ul>
 
-                <h3>Future Roadmap</h3>
+                <h3>Getting Started</h3>
                 <p>
-                    The evolution of IVIDS continues with several key milestones on the horizon. We are currently exploring deeper integration with local media servers, allowing users to bring the IVIDS experience to their personal libraries. Additionally, work has begun on a "Cinematic Mode" which will use ambient light algorithms to extend the on-screen colors to the rest of the UI, further enhancing immersion.
+                    <strong>Install via APK (Android):</strong> Copy the pre-built `IVIDS.apk` package in the codebase to your Android device or Android TV to install and run the native media player.
+                </p>
+                <p>
+                    <strong>Run via Web Server:</strong> Serve the `assets/main/gui` directory using any local web server (such as Python `http.server` or VS Code Live Server) to run the interface on any desktop or mobile browser.
                 </p>
             </div>
         </section>

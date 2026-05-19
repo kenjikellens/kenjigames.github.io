@@ -24,13 +24,10 @@
 
                 <div class="content-block" style="margin-bottom: 80px;">
                     <p style="font-size: 1.25rem; color: var(--text-dim); margin-bottom: 32px; max-width: 800px;">
-                        The Great Awakening is a high-fidelity research archive project designed to document declassified files, 
-                        globalist agendas, and institutional analysis. Built as a high-performance SPA using a custom vanilla 
-                        JavaScript framework, it prioritizes speed, SEO, and authoritative aesthetics.
+                        The Great Awakening is a declassified dossier repository engineered as a high-performance SPA. Bypassing heavy client frameworks, it couples custom routing with a flat-file JS database, a persistent dark/light theme engine, a custom background canvas visualizer, and an integrated AI chat widget.
                     </p>
                     <div class="hero-btns">
-                        <a href="https://github.com/kenjikellens/the-great-awakening" target="_blank" class="btn">Access
-                            Repository</a>
+                        <a href="https://github.com/kenjikellens/the-great-awakening" target="_blank" class="btn">View Repository</a>
                     </div>
                 </div>
             </div>
@@ -40,34 +37,34 @@
             <div class="container">
                 <div class="details-grid">
                     <div class="details-content">
-                        <h2>Building a Modern Research Archive</h2>
+                        <h2>Authoritative Archival Exploration</h2>
                         <p>
-                            The Great Awakening is more than just a document repository; it is a high-fidelity research ecosystem designed to navigate the complexities of institutional analysis and globalist agendas. In an era where information is often fragmented and transitory, our project provides a stable, authoritative platform for the preservation and study of critical declassified files.
+                            Institutional analysis requires structural clarity and uninterrupted reading focus. The Great Awakening was designed to combine academic rigor with high-speed web delivery. The interface provides a distraction-free environment for inspecting documents, timelines, and entity relations.
                         </p>
                         <p>
-                            Every aspect of the interface is engineered to support deep-dive research. From the academic-grade typography that ensures long-form readability, to the custom-built navigation systems that allow researchers to pivot between disparate data points with near-zero latency, The Great Awakening sets a new standard for archival web design.
+                            To maintain speed and SEO compliance, the application is built entirely as a vanilla SPA. Navigation, dossier search indexing, chat assistance, and rendering models run directly in the browser, eliminating rendering lags and database connection latency.
                         </p>
                     </div>
                     <div class="details-features">
                         <div class="feature-item">
                             <i class="fas fa-search"></i>
                             <div class="feature-text">
-                                <h4>Advanced Discovery Engine</h4>
-                                <p>Real-time filtering and keyword mapping for instant access to thousands of archival entries.</p>
+                                <h4>Advanced Dossier Querying</h4>
+                                <p>Real-time scanning and keyword filtering across titles, summaries, and categories from local indices.</p>
                             </div>
                         </div>
                         <div class="feature-item">
-                            <i class="fas fa-project-diagram"></i>
+                            <i class="fas fa-comments"></i>
                             <div class="feature-text">
-                                <h4>Relational Dossiers</h4>
-                                <p>Interconnected data structures that reveal the hidden links between institutional actors and global agendas.</p>
+                                <h4>Integrated AI Assistant</h4>
+                                <p>Interactive chat widget providing quick references and assisting researchers with navigation.</p>
                             </div>
                         </div>
                         <div class="feature-item">
-                            <i class="fas fa-feather-alt"></i>
+                            <i class="fas fa-adjust"></i>
                             <div class="feature-text">
-                                <h4>Authoritative UI</h4>
-                                <p>Premium serif typography and high-contrast grids designed for maximum academic clarity.</p>
+                                <h4>Theme & Canvas Engine</h4>
+                                <p>Strict Segoe UI/serif readability, persistent dark/light themes, and custom ambient hero canvas particle simulations.</p>
                             </div>
                         </div>
                     </div>
@@ -79,30 +76,34 @@
             <div class="container">
                 <h2>Technical Engineering</h2>
                 <p>
-                    The Great Awakening is built on a custom-engineered vanilla JavaScript Single Page Application (SPA) framework. This technical decision was driven by the need for extreme speed, search engine optimization, and zero external dependencies. By bypassing the bloat of modern libraries, we've created a platform that loads instantaneously and scales effortlessly.
+                    The platform's vanilla Single Page Application framework ensures that files and sections load dynamically with zero third-party dependencies.
                 </p>
-                <h3>Hash-Based Routing & Fragment Injection</h3>
+                <h3>Hash-Based SPA Routing</h3>
                 <p>
-                    The core of our navigation system is a custom hash-based router. Instead of reloading the entire page, the router intercepts URL changes (e.g., `#home`, `#dossiers`, `#dossier/slug`) and dynamically fetches small HTML "fragments." This process ensures that the user's research flow is never interrupted by full-page refreshes, creating an experience that feels fluid and cohesive.
+                    A custom router (`js/router.js`) tracks hash modifications (e.g., `#home`, `#dossiers`, `#dossier/slug`). It dynamically loads fragment partials from `pages/fragments/` and injects dossier HTML from `pages/dossiers/` into the content shell, extracting styles to preserve unique layouts.
                 </p>
-                <h3>The Dossier Management System</h3>
+                <h3>JSON Database Layer</h3>
                 <p>
-                    Our data layer is built on a flat-file JavaScript database, optimized for real-time querying. The Dossier Manager handles the rendering of the Mega Menu and the Categorized Legend automatically, ensuring that new research can be added to the archive with minimal technical friction. This system allows for advanced search capabilities that scan titles, summaries, and keywords simultaneously.
+                    A centralized flat-file database (`data/dossiers.js`) catalogs metadata for all research records. The Dossier Manager (`js/dossier-manager.js`) reads this file to build index lists, update the dynamic mega menu, and drive the local search engine.
+                </p>
+                <h3>AI Chat & Theme Utilities</h3>
+                <p>
+                    An inline chat module (`js/ai-chat.js`) powers the helper drawer widget. User options and theme scales are governed by the `theme-manager.js`, saving selections to localStorage for seamless persistence.
                 </p>
                 
                 <h3>Technical Stack</h3>
                 <ul class="tech-stack-list">
-                    <li class="tech-tag">Custom Vanilla JS SPA Framework</li>
-                    <li class="tech-tag">Hash-Based Routing Engine</li>
-                    <li class="tech-tag">Asynchronous Fragment Loading</li>
-                    <li class="tech-tag">Flat-File JavaScript Database</li>
-                    <li class="tech-tag">Libre Baskerville Typography</li>
-                    <li class="tech-tag">Hardware-Accelerated UI</li>
+                    <li class="tech-tag">Custom Hash SPA Router</li>
+                    <li class="tech-tag">Flat-File JSON Database Layer</li>
+                    <li class="tech-tag">AI Assistant Chat Drawer</li>
+                    <li class="tech-tag">HTML5 Canvas Particle Simulation</li>
+                    <li class="tech-tag">Theme Manager (Dark & Light)</li>
+                    <li class="tech-tag">Vanilla ES6 JavaScript & CSS3</li>
                 </ul>
 
-                <h3>Future Roadmap</h3>
+                <h3>Getting Started</h3>
                 <p>
-                    The project is currently evolving to include an "Interactive Timeline" system, which will allow researchers to visualize the chronological progression of institutional agendas. We are also exploring the implementation of a "Knowledge Graph" view, which will provide a visual map of the relationships between different dossiers, actors, and events within the research archive.
+                    Clone the source and serve the directory using a lightweight web server (e.g. `python -m http.server 8000` or VS Code Live Server) to enable `fetch()` functionality for the dynamic dossier fragments.
                 </p>
             </div>
         </section>

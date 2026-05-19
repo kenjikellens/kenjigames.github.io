@@ -17,20 +17,18 @@
         <section class="section">
             <div class="container">
                 <div class="section-header">
-                    <span class="badge">In development</span>
+                    <span class="badge">Multi-Platform</span>
                     <h1>IVIDS <span>Music</span></h1>
-                    <p>A high-fidelity audio experience for the web—listen without ads.</p>
+                    <p>Ad-free hybrid music streaming player for Android, PC, and standard web browsers.</p>
                 </div>
 
                 <div class="content-block" style="margin-bottom: 80px;">
                     <p style="font-size: 1.25rem; color: var(--text-dim); margin-bottom: 32px; max-width: 800px;">
-                        IVIDS Music brings the technical precision of the IVIDS ecosystem to the world of audio. 
-                        Designed for audiophiles and power users, it provides a seamless, high-performance interface 
-                        for web-based listening without the interruptions of modern platforms.
+                        IVIDS Music combines a Kotlin native wrapper with a dark glassmorphic HTML/CSS/JS frontend. It pulls artist and song data from the Deezer API, extracts audio stream URLs from YouTube via Invidious, and runs entirely client-side without external server requirements.
                     </p>
-                    <div class="hero-btns">
+                    <div class="hero-btns" style="display: flex; flex-wrap: wrap; gap: 16px;">
                         <a href="https://github.com/kenjikellens/IVIDSMusic" target="_blank" rel="noopener"
-                            class="btn">View repository</a>
+                            class="btn">View Repository</a>
                     </div>
                 </div>
             </div>
@@ -40,34 +38,34 @@
             <div class="container">
                 <div class="details-grid">
                     <div class="details-content">
-                        <h2>High-Fidelity Audio Purity</h2>
+                        <h2>Sleek, Ad-Free Music Purity</h2>
                         <p>
-                            Music on the web has become a cluttered experience. Between intrusive advertising, slow-loading assets, and complex algorithms that prioritize discovery over the listener's own library, the "art of listening" has been lost. IVIDS Music is a direct response to this trend.
+                            IVIDS Music was created to strip away the ads, tracking scripts, and subscription models that clutter modern music streaming. The app delivers a high-fidelity environment built with premium dark glassmorphic surfaces, dynamic backdrop blurs, and micro-animations.
                         </p>
                         <p>
-                            By taking the technical precision of the IVIDS cinematic ecosystem and applying it to audio, we've created a platform where the interface disappears, leaving only the sound. Our focus is on providing a focused, high-performance environment for audiophiles who demand both aesthetic and technical excellence from their web tools.
+                            The codebase is engineered with environment-sensing capabilities: it runs as a native Android app (Mobile and TV viewports), compiles as a standalone Windows PC executable (`IVIDSMusic_PC.exe`), or loads in standard web browsers. It automatically switches networks, scaling rules, and input drivers to match the environment.
                         </p>
                     </div>
                     <div class="details-features">
                         <div class="feature-item">
-                            <i class="fas fa-headphones"></i>
-                            <div class="feature-text">
-                                <h4>Audiophile Focused</h4>
-                                <p>Minimal processing on the audio signal to ensure the highest possible fidelity and bit-depth.</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
                             <i class="fas fa-ban"></i>
                             <div class="feature-text">
-                                <h4>Pure Environment</h4>
-                                <p>No ads, no tracking, no distractions. Just a clean interface dedicated to high-fidelity sound.</p>
+                                <h4>Ad-Free Streams</h4>
+                                <p>Streams audio directly from YouTube via privacy-friendly Invidious instances with zero commercial interruptions.</p>
                             </div>
                         </div>
                         <div class="feature-item">
-                            <i class="fas fa-microchip"></i>
+                            <i class="fas fa-sliders-h"></i>
                             <div class="feature-text">
-                                <h4>Optimized Audio Core</h4>
-                                <p>Built with efficiency in mind, ensuring zero dropouts and instant response times.</p>
+                                <h4>UI Scaling & Color Tinting</h4>
+                                <p>Segmented UI scaling from 75% to 150% and Canvas-based real-time UI tinting matched to album cover art.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-tv"></i>
+                            <div class="feature-text">
+                                <h4>TV D-Pad & Screensaver</h4>
+                                <p>Custom spatial navigation engine for D-pad control and automated screensaver transition after 60s of inactivity.</p>
                             </div>
                         </div>
                     </div>
@@ -79,31 +77,41 @@
             <div class="container">
                 <h2>The Architecture of Sound</h2>
                 <p>
-                    IVIDS Music is engineered from the ground up to handle the complexities of high-bitrate audio in a browser environment. While many web-based players struggle with memory management and audio buffering, IVIDS Music uses a custom implementation of the Web Audio API to ensure a stable and transparent audio path.
+                    IVIDS Music uses a hybrid stack that balances platform-native features with the flexibility of CSS and ES Modules.
                 </p>
-                <h3>Technical Philosophy: "Wait for the Beat"</h3>
+                <h3>Smart Environment Interception</h3>
                 <p>
-                    The core philosophy of IVIDS Music is reflected in its technical implementation: the UI should never get in the way of the music. We utilize a reactive state management system that handles playlist updates and track transitions in the background, allowing the user to browse their collection without interrupting the current stream.
+                    On Android, a Kotlin backend intercepts WebView requests to bypass CORS limitations and resolve YouTube audio queries natively. On the standard web, the JS core automatically switches to public CORS proxies to maintain full search and discovery functionality.
                 </p>
-                <h3>Web Audio API Mastery</h3>
+                <h3>Interface scale management</h3>
                 <p>
-                    Unlike standard HTML5 audio players, IVIDS Music leverages the advanced capabilities of the Web Audio API. This allows for real-time analysis and visualization of the audio signal, as well as the ability to apply custom gain and equalization without introducing digital distortion. The result is a more robust and flexible playback engine that rivals dedicated desktop players.
+                    The UI uses CSS custom properties registered via `@property` to apply scale adjustments globally. Users can toggle scaling in the Settings menu (75% to 150%), which persists in localStorage and dynamically adjusts the layout density.
+                </p>
+                <h3>Personal Library Dashboard</h3>
+                <p>
+                    Includes a "You" dashboard which manages user favorites, liked albums, and playback history (capped at 20 tracks, sanitized against duplicates). An offline queue system allows immediate sequential or shuffled playback.
                 </p>
                 
                 <h3>Technical Stack</h3>
                 <ul class="tech-stack-list">
+                    <li class="tech-tag">Kotlin & Android WebView</li>
+                    <li class="tech-tag">Vanilla JS (ES Modules)</li>
                     <li class="tech-tag">Web Audio API</li>
-                    <li class="tech-tag">Asynchronous State Management</li>
-                    <li class="tech-tag">High-Resolution Canvas Rendering</li>
-                    <li class="tech-tag">Local Storage Caching</li>
-                    <li class="tech-tag">Vanilla JavaScript (ES6+)</li>
-                    <li class="tech-tag">CSS Variable Theming</li>
+                    <li class="tech-tag">Canvas Color Extraction</li>
+                    <li class="tech-tag">Deezer & Invidious REST APIs</li>
+                    <li class="tech-tag">D-Pad Spatial Navigation Engine</li>
                 </ul>
 
-                <h3>Future Roadmap</h3>
+                <h3>Platform Deliverables</h3>
                 <p>
-                    The next phase of development for IVIDS Music includes the introduction of custom real-time visualizers that respond directly to the frequency spectrum of the music. We are also working on a "Lossless Archive" integration, which will allow users to stream high-resolution audio files (FLAC, ALAC) directly through the IVIDS interface with minimal latency.
+                    Pre-compiled builds are available for different host platforms:
                 </p>
+                <ul>
+                    <li><strong>Android TV:</strong> Optimized D-pad responsive APK (`IVIDSMusic_TV.apk`).</li>
+                    <li><strong>Android Mobile:</strong> Touch interface responsive APK (`IVIDSMusic_Mobile.apk`).</li>
+                    <li><strong>Windows Desktop:</strong> Standalone executable (`IVIDSMusic_PC.exe`).</li>
+                    <li><strong>Standard Web:</strong> Hostable static directory loaded via any browser.</li>
+                </ul>
             </div>
         </section>
     </main>
