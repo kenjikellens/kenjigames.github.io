@@ -19,8 +19,34 @@
             <a href="contact.html" class="nav-item" data-page="contact">Contact</a>
         </nav>
         <div class="header-actions">
-            <button id="themeToggle" class="icon-btn" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
-            <button id="complexityToggle" class="icon-btn" aria-label="Toggle Layout Mode" style="margin-left: 8px;"><i class="fas fa-toggle-on"></i></button>
+            <div class="settings-dropdown">
+                <button id="settingsBtn" class="icon-btn" aria-label="Open Settings" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <div class="settings-menu" id="settingsMenu">
+                    <div class="settings-header">Preferences</div>
+                    <div class="settings-item">
+                        <div class="settings-text">
+                            <span class="settings-title">Theme</span>
+                            <span class="settings-description">Switch between light and dark modes.</span>
+                        </div>
+                        <div class="toggle-group" id="themeGroup">
+                            <button class="toggle-btn" id="themeDarkBtn" data-value="dark">Dark</button>
+                            <button class="toggle-btn" id="themeLightBtn" data-value="light">Light</button>
+                        </div>
+                    </div>
+                    <div class="settings-item">
+                        <div class="settings-text">
+                            <span class="settings-title">Layout Style</span>
+                            <span class="settings-description">Simplify animations, layouts, and colors.</span>
+                        </div>
+                        <div class="toggle-group" id="complexityGroup">
+                            <button class="toggle-btn" id="layoutModernBtn" data-value="modern">Modern</button>
+                            <button class="toggle-btn" id="layoutMinimalBtn" data-value="minimal">Minimal</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </header>

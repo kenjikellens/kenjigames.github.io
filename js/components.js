@@ -74,7 +74,7 @@ class ComponentLoader {
     postLoadActions(file) {
         if (file === 'header.html') {
             this.handleActiveLinks();
-            this.initThemeToggle();
+            this.initSettingsMenu();
             this.initHeaderScroll();
         }
     }
@@ -102,34 +102,91 @@ class ComponentLoader {
     }
 
     /**
-     * Coordinates click events and icon states for theme and complexity selectors.
-     * Saves preferences to localStorage and updates class labels on the document body.
+     * Initializes the settings dropdown menu events, updates button active classes,
+     * and coordinates theme/complexity selections with localStorage and body classes.
      */
-    initThemeToggle() {
-        const themeToggle = document.getElementById('themeToggle');
-        const complexityToggle = document.getElementById('complexityToggle');
+    initSettingsMenu() {
+        const settingsBtn = document.getElementById('settingsBtn');
+        const settingsMenu = document.getElementById('settingsMenu');
+        
+        // Toggle settings dropdown visibility on click
+        if (settingsBtn && settingsMenu) {
+            settingsBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = settingsMenu.classList.toggle('active');
+                settingsBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
 
-        // Initialize theme button icon based on current state
-        if (themeToggle) {
-            const isLight = document.body.classList.contains('light-theme');
-            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            
-            themeToggle.addEventListener('click', () => {
-                const isNowLight = document.body.classList.toggle('light-theme');
-                localStorage.setItem('theme', isNowLight ? 'light' : 'dark');
-                themeToggle.innerHTML = isNowLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            // Close dropdown if clicking outside the settings panel
+            document.addEventListener('click', (e) => {
+                if (!settingsMenu.contains(e.target) && e.target !== settingsBtn && !settingsBtn.contains(e.target)) {
+                    settingsMenu.classList.remove('active');
+                    settingsBtn.setAttribute('aria-expanded', 'false');
+                }
             });
         }
 
-        // Initialize complexity button icon based on current state
-        if (complexityToggle) {
-            const isMinimal = document.body.classList.contains('minimal-theme');
-            complexityToggle.innerHTML = isMinimal ? '<i class="fas fa-toggle-off"></i>' : '<i class="fas fa-toggle-on"></i>';
+        // Theme Button Selection Elements
+        const themeDarkBtn = document.getElementById('themeDarkBtn');
+        const themeLightBtn = document.getElementById('themeLightBtn');
 
-            complexityToggle.addEventListener('click', () => {
-                const isNowMinimal = document.body.classList.toggle('minimal-theme');
-                localStorage.setItem('complexity', isNowMinimal ? 'minimal' : 'modern');
-                complexityToggle.innerHTML = isNowMinimal ? '<i class="fas fa-toggle-off"></i>' : '<i class="fas fa-toggle-on"></i>';
+        /**
+         * Updates active highlight states for theme buttons.
+         * @param {boolean} isLight - True if light theme is active.
+         */
+        const updateThemeButtons = (isLight) => {
+            if (themeLightBtn && themeDarkBtn) {
+                themeLightBtn.classList.toggle('active', isLight);
+                themeDarkBtn.classList.toggle('active', !isLight);
+            }
+        };
+
+        if (themeDarkBtn && themeLightBtn) {
+            const currentIsLight = document.body.classList.contains('light-theme');
+            updateThemeButtons(currentIsLight);
+
+            themeDarkBtn.addEventListener('click', () => {
+                document.body.classList.remove('light-theme');
+                localStorage.setItem('theme', 'dark');
+                updateThemeButtons(false);
+            });
+
+            themeLightBtn.addEventListener('click', () => {
+                document.body.classList.add('light-theme');
+                localStorage.setItem('theme', 'light');
+                updateThemeButtons(true);
+            });
+        }
+
+        // Layout Complexity Button Selection Elements
+        const layoutModernBtn = document.getElementById('layoutModernBtn');
+        const layoutMinimalBtn = document.getElementById('layoutMinimalBtn');
+
+        /**
+         * Updates active highlight states for complexity buttons.
+         * @param {boolean} isMinimal - True if minimalist layout is active.
+         */
+        const updateComplexityButtons = (isMinimal) => {
+            if (layoutModernBtn && layoutMinimalBtn) {
+                layoutMinimalBtn.classList.toggle('active', isMinimal);
+                layoutModernBtn.classList.toggle('active', !isMinimal);
+            }
+        };
+
+        if (layoutModernBtn && layoutMinimalBtn) {
+            const currentIsMinimal = document.body.classList.contains('minimal-theme');
+            updateComplexityButtons(currentIsMinimal);
+
+            layoutModernBtn.addEventListener('click', () => {
+                document.body.classList.remove('minimal-theme');
+                localStorage.setItem('complexity', 'modern');
+                updateComplexityButtons(false);
+            });
+
+            layoutMinimalBtn.addEventListener('click', () => {
+                document.body.classList.add('minimal-theme');
+                localStorage.setItem('complexity', 'minimal');
+                updateComplexityButtons(true);
             });
         }
     }

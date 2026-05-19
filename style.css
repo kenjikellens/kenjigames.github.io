@@ -265,6 +265,121 @@ body::after {
     background: var(--card-bg-hover);
 }
 
+/* Container for header settings icon and dropdown panel */
+.settings-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Panel containing interactive preference toggles */
+.settings-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 320px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    backdrop-filter: blur(12px);
+}
+
+/* Active class revealing the settings panel */
+.settings-menu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Title label for the preferences panel header */
+.settings-header {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Row container for setting description and toggle controls */
+.settings-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.settings-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Text block for title and description labels */
+.settings-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Title label for preference setting row */
+.settings-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Explanatory description of what the preference toggles configure */
+.settings-description {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.3;
+}
+
+/* Horizontal button group for multi-option selection */
+.toggle-group {
+    display: flex;
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px;
+    width: 100%;
+}
+
+/* Individual choice button inside preference toggle group */
+.toggle-btn {
+    flex: 1;
+    padding: 8px 12px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+/* Active option selector state highlighted with background color */
+.toggle-btn.active {
+    background: var(--card-bg-hover);
+    color: var(--primary);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 480px) {
+    /* Responsive adjustment for settings panel on small screen viewports */
+    .settings-menu {
+        width: 280px;
+        padding: 16px;
+    }
+}
+
 .nav-links {
     display: flex;
     gap: 32px;
