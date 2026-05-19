@@ -964,13 +964,13 @@ body::after {
 
 /* First slide light theme background override for high-contrast visibility */
 body.light-theme .welcome-bg {
-    background-image: linear-gradient(rgba(241, 245, 249, 0.85), rgba(241, 245, 249, 0.85)), url('resources/img/currents-gatefold-2x.jpg');
+    background-image: linear-gradient(45deg, var(--bg-main), rgba(16, 185, 129, 0.06)) !important;
 }
 
 @media (max-width: 767px) or (orientation: portrait) {
     /* First slide light theme mobile background override */
     body.light-theme .welcome-bg {
-        background-image: linear-gradient(rgba(241, 245, 249, 0.9), rgba(241, 245, 249, 0.9)), url('resources/img/currents-gatefold-1x.jpg');
+        background-image: linear-gradient(45deg, var(--bg-main), rgba(16, 185, 129, 0.06)) !important;
     }
 }
 
