@@ -1805,21 +1805,27 @@ body.minimal-theme .slide-content > * {
     filter: none !important;
 }
 
-/* Disable moving glints and linear text gradients in headers, rendering static color instead */
+/* Disable moving glints, gradients, and custom color accents on headers in minimal mode, using main text color */
 body.minimal-theme .slide h1 span,
 body.minimal-theme .section-header h1 span,
 body.minimal-theme .section-header h2 span {
     background: none !important;
-    -webkit-text-fill-color: var(--primary) !important;
-    color: var(--primary) !important;
+    -webkit-text-fill-color: var(--text-main) !important;
+    color: var(--text-main) !important;
 }
 
-/* Remove glowing outlines and drop shadow hover effects in minimal mode */
-body.minimal-theme .btn:hover,
+/* Disable hover visual changes for containers in minimal mode */
 body.minimal-theme .product-showcase:hover,
 body.minimal-theme .feature-item:hover,
 body.minimal-theme .contact-detail-card:hover,
-body.minimal-theme .about-philosophy-card:hover,
+body.minimal-theme .about-philosophy-card:hover {
+    background: var(--card-bg) !important;
+    border-color: var(--border) !important;
+    box-shadow: none !important;
+}
+
+/* Remove glowing outlines and drop shadow hover effects from buttons in minimal mode */
+body.minimal-theme .btn:hover,
 body.minimal-theme .form-submit-btn:hover {
     box-shadow: none !important;
 }
@@ -1848,6 +1854,18 @@ body.light-theme .slide::after {
 /* Remove decorative glowing radial backdrops from project showcase cards in minimal mode */
 body.minimal-theme .product-showcase::before {
     content: none !important;
+    display: none !important;
+}
+
+/* Style badges to be gray/neutral instead of green in minimal mode */
+body.minimal-theme .badge {
+    background: var(--btn-bg) !important;
+    color: var(--text-dim) !important;
+    border-color: var(--border) !important;
+}
+
+/* Hide channel icons in minimalist mode to reduce visual clutter and green colors */
+body.minimal-theme .channel-icon {
     display: none !important;
 }
 
