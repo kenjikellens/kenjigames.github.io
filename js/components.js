@@ -4,7 +4,10 @@
  * and manages global site functionality (Theme, Navigation).
  */
 
-// Immediately apply theme and complexity classes from localStorage or system theme to avoid FOUC
+/**
+ * Immediately reads the user's theme and layout complexity settings from localStorage, hardware detection,
+ * or system preferences, and applies the corresponding CSS classes to the body element to avoid FOUC.
+ */
 (function() {
     let savedTheme = localStorage.getItem('theme');
     if (!savedTheme) {
@@ -13,7 +16,19 @@
     }
     document.body.classList.toggle('light-theme', savedTheme === 'light');
 
-    const savedComplexity = localStorage.getItem('complexity') || 'modern';
+    let savedComplexity = localStorage.getItem('complexity');
+    if (!savedComplexity) {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const lowCpuCores = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+        const lowMemory = navigator.deviceMemory && navigator.deviceMemory <= 4;
+        
+        if (prefersReducedMotion || lowCpuCores || lowMemory) {
+            savedComplexity = 'minimal';
+            localStorage.setItem('complexity', 'minimal');
+        } else {
+            savedComplexity = 'modern';
+        }
+    }
     document.body.classList.toggle('minimal-theme', savedComplexity === 'minimal');
 })();
 
