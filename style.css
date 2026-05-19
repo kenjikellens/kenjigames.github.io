@@ -376,9 +376,18 @@ body::after {
     position: relative;
     height: 100vh;
     width: 100%;
-    background: var(--bg-main);
+    background: #0a0a0b;
     overflow: hidden;
     isolation: isolate;
+    /* Always enforce dark theme variables inside the hero slider */
+    --bg-main: #0a0a0b;
+    --text-main: #f3f4f6;
+    --text-dim: #9ca3af;
+    --primary: #10b981;
+    --btn-text: #f3f4f6;
+    --btn-bg: rgba(255, 255, 255, 0.05);
+    --btn-bg-hover: rgba(255, 255, 255, 0.08);
+    --btn-border: rgba(255, 255, 255, 0.12);
 }
 
 /* Extra depth: soft orbs behind slides (visible in letterbox / gradient areas) */
@@ -962,33 +971,7 @@ body::after {
     }
 }
 
-/* First slide light theme background override for high-contrast visibility */
-body.light-theme .welcome-bg {
-    background-image: linear-gradient(rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.55)), url('resources/img/currents-gatefold-2x.jpg') !important;
-    opacity: 1 !important;
-    filter: brightness(0.7) !important;
-}
 
-@media (max-width: 767px) or (orientation: portrait) {
-    /* First slide light theme mobile background override */
-    body.light-theme .welcome-bg {
-        background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('resources/img/currents-gatefold-1x.jpg') !important;
-        opacity: 1 !important;
-        filter: brightness(0.7) !important;
-    }
-}
-
-/* Ensure slide typography stands out with clean white colors over the dark cover image in Light Modern mode */
-body.light-theme .slide:has(.welcome-bg) h1,
-body.light-theme .slide[data-slide="1"] h1 {
-    color: #ffffff !important;
-}
-
-/* Ensure paragraph slide text stands out over the dark cover image in Light Modern mode */
-body.light-theme .slide:has(.welcome-bg) p,
-body.light-theme .slide[data-slide="1"] p {
-    color: rgba(255, 255, 255, 0.85) !important;
-}
 
 /* Second slide background container displaying YouTube channel details */
 .youtube-bg {
@@ -1876,12 +1859,7 @@ body.minimal-theme .logo span {
     text-shadow: none !important;
 }
 
-/* Adjust slide decorative gradient blending modes for light background readability */
-body.light-theme .slide::before,
-body.light-theme .slide::after {
-    mix-blend-mode: normal !important;
-    opacity: 0.15 !important;
-}
+
 
 /* Remove decorative glowing radial backdrops from project showcase cards in minimal mode */
 body.minimal-theme .product-showcase::before {
