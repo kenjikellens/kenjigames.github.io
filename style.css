@@ -1845,3 +1845,9 @@ body.light-theme .slide::after {
     opacity: 0.15 !important;
 }
 
+/* Remove decorative glowing radial backdrops from project showcase cards in minimal mode */
+body.minimal-theme .product-showcase::before {
+    content: none !important;
+    display: none !important;
+}
+
