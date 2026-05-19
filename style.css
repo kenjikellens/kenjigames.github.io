@@ -148,35 +148,23 @@ body::after {
 
 @keyframes ambient-drift {
     0% {
-        background-position: 0% 0%;
-        transform: rotate(0deg) scale(1);
+        transform: translate(0, 0) rotate(0deg) scale(1);
     }
-
-    33% {
-        background-position: 100% 30%;
+    50% {
+        transform: translate(-2%, 2%) rotate(1deg) scale(1.02);
     }
-
-    66% {
-        background-position: 30% 100%;
-    }
-
     100% {
-        background-position: 80% 60%;
-        transform: rotate(2deg) scale(1.03);
+        transform: translate(2%, -1%) rotate(-1deg) scale(1.04);
     }
 }
 
 @keyframes grid-breathe {
-
     0%,
     100% {
         opacity: 0.55;
-        filter: brightness(1);
     }
-
     50% {
         opacity: 0.95;
-        filter: brightness(1.15);
     }
 }
 
@@ -681,10 +669,9 @@ body::after {
 
 /* Slide 2 — YouTube: scan + noise shimmer */
 .slide:nth-child(2)::before {
-    background: linear-gradient(transparent 48%,
-            rgba(255, 0, 0, 0.07) 50%,
-            transparent 52%);
-    background-size: 100% 180%;
+    bottom: auto;
+    height: 4px;
+    background: rgba(255, 0, 0, 0.15);
     animation: scan-sweep 6s linear infinite;
     mix-blend-mode: screen;
     opacity: 0.7;
@@ -702,11 +689,11 @@ body::after {
 
 @keyframes scan-sweep {
     0% {
-        background-position: 0 -100%;
+        transform: translateY(0);
     }
 
     100% {
-        background-position: 0 200%;
+        transform: translateY(100vh);
     }
 }
 
@@ -722,6 +709,7 @@ body::after {
 
 /* Slide 3 — IVIDS: diagonal tech grid */
 .slide:nth-child(3)::before {
+    inset: -30px;
     background-image:
         repeating-linear-gradient(135deg,
             transparent,
@@ -742,11 +730,11 @@ body::after {
 
 @keyframes grid-slide {
     0% {
-        background-position: 0 0;
+        transform: translate(0, 0);
     }
 
     100% {
-        background-position: 400px 400px;
+        transform: translate(-19px, 19px);
     }
 }
 
@@ -802,14 +790,15 @@ body::after {
 }
 
 @keyframes hue-wave {
-
     0%,
     100% {
-        filter: hue-rotate(0deg);
+        opacity: 0.35;
+        transform: scale(1) rotate(0deg);
     }
 
     50% {
-        filter: hue-rotate(25deg);
+        opacity: 0.55;
+        transform: scale(1.08) rotate(3deg);
     }
 }
 
@@ -1384,7 +1373,7 @@ body::after {
     top: -80px;
     right: -60px;
     border: 1px solid rgba(16, 185, 129, 0.12);
-    border-radius: 32% 68% 70% 30% / 30% 35% 65% 70%;
+    border-radius: 40% 60% 60% 40% / 40% 45% 55% 60%;
     animation: blob-morph 24s ease-in-out infinite alternate;
     pointer-events: none;
     z-index: 0;
@@ -1409,12 +1398,10 @@ body::after {
 @keyframes blob-morph {
     0% {
         transform: rotate(0deg) scale(1);
-        border-radius: 32% 68% 70% 30% / 30% 35% 65% 70%;
     }
 
     100% {
         transform: rotate(90deg) scale(1.08);
-        border-radius: 58% 42% 38% 62% / 45% 55% 45% 55%;
     }
 }
 
