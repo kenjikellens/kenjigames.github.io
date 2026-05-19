@@ -950,27 +950,43 @@ body::after {
     }
 }
 
-/* Hero Slider Backgrounds */
+/* First slide background container for homepage hero showcase */
 .welcome-bg {
     background-image: linear-gradient(rgba(10, 10, 11, 0.6), rgba(10, 10, 11, 0.6)), url('resources/img/currents-gatefold-2x.jpg');
 }
 
 @media (max-width: 767px) or (orientation: portrait) {
+    /* First slide background container mobile image fallback */
     .welcome-bg {
         background-image: linear-gradient(rgba(10, 10, 11, 0.7), rgba(10, 10, 11, 0.7)), url('resources/img/currents-gatefold-1x.jpg');
     }
 }
 
+/* First slide light theme background override for high-contrast visibility */
+body.light-theme .welcome-bg {
+    background-image: linear-gradient(rgba(241, 245, 249, 0.85), rgba(241, 245, 249, 0.85)), url('resources/img/currents-gatefold-2x.jpg');
+}
+
+@media (max-width: 767px) or (orientation: portrait) {
+    /* First slide light theme mobile background override */
+    body.light-theme .welcome-bg {
+        background-image: linear-gradient(rgba(241, 245, 249, 0.9), rgba(241, 245, 249, 0.9)), url('resources/img/currents-gatefold-1x.jpg');
+    }
+}
+
+/* Second slide background container displaying YouTube channel details */
 .youtube-bg {
-    background-image: linear-gradient(45deg, #0a0a0b, #ff000022);
+    background-image: linear-gradient(45deg, var(--bg-main), rgba(239, 68, 68, 0.08));
 }
 
+/* Third slide background container displaying IVIDS project details */
 .ivids-bg {
-    background-image: linear-gradient(45deg, #0a0a0b, #3b82f622);
+    background-image: linear-gradient(45deg, var(--bg-main), rgba(59, 130, 246, 0.08));
 }
 
+/* Fourth slide background container displaying IVIDS Music project details */
 .music-bg {
-    background-image: linear-gradient(45deg, #0a0a0b, #8b5cf622);
+    background-image: linear-gradient(45deg, var(--bg-main), rgba(139, 92, 246, 0.08));
 }
 
 /* Hero Typography Scaling */
