@@ -11,18 +11,106 @@
 </head>
 
 <body>
+    <!-- Shared header component -->
     <header-component></header-component>
 
-    <main
-        style="padding-top: 15vh; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; text-align: center;">
+    <!-- Main About content -->
+    <main style="padding-top: 15vh; min-height: 80vh; margin-bottom: 80px;">
         <div class="container">
-            <h1 style="font-size: 3rem; margin-bottom: 20px;">404 - Page Under Construction</h1>
-            <p style="color: var(--text-dim); margin-bottom: 40px;">The KenjiGames About page is coming soon. Merging
-                technical precision with official hub aesthetics.</p>
-            <a href="index.html" class="btn">Return Home</a>
+            <!-- Page Header -->
+            <div class="section-header" style="text-align: center;">
+                <span class="badge">About KenjiGames</span>
+                <h1>The <span>Mission</span> & Code</h1>
+                <p>Merging technical precision with official hub aesthetics.</p>
+            </div>
+
+            <!-- About Section: Intro & Philosophy -->
+            <div class="about-section-grid">
+                <div class="about-content">
+                    <h2 style="font-size: 2rem; margin-bottom: 20px; color: #fff;">Our Story</h2>
+                    <p style="color: var(--text-dim); margin-bottom: 20px; font-size: 1.1rem; line-height: 1.8;">
+                        KenjiGames is an independent software and content studio founded by Kenji Kellens. Our core philosophy centers on a refusal of unnecessary framework bloat, prioritizing direct, high-performance web engineering and native app deployment.
+                    </p>
+                    <p style="color: var(--text-dim); margin-bottom: 20px; font-size: 1.1rem; line-height: 1.8;">
+                        From our flagship multi-platform media players like IVIDS and IVIDS Music, to our Gemini-powered cataloging solutions and gaming utilities, every project we undertake is built with an edge-to-edge cinematic design standard and smooth, low-latency execution.
+                    </p>
+                </div>
+                <div class="about-card-visual" style="display: flex; justify-content: center;">
+                    <div class="about-philosophy-card" style="max-width: 400px; text-align: center;">
+                        <i class="fas fa-code" style="color: var(--primary); font-size: 3rem; margin-bottom: 20px;"></i>
+                        <h3 style="color: #fff; margin-bottom: 12px;">Zero-Framework Standard</h3>
+                        <p style="color: var(--text-dim); font-size: 0.95rem;">
+                            We leverage modern, native web APIs (ES Modules, custom components, and CSS grids) to keep bundles tiny and performance at a locked 60 FPS.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Pillars Section Header -->
+            <div class="section-header" style="text-align: center; margin-top: 80px;">
+                <h2>Our Core <span>Pillars</span></h2>
+                <p>The structural tenets guiding our creative and technical processes.</p>
+            </div>
+            
+            <!-- Three Pillar Grid -->
+            <div class="about-pillars-grid">
+                <!-- Pillar 1: Performance -->
+                <div class="about-philosophy-card">
+                    <div style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 style="color: #fff; margin-bottom: 12px; font-size: 1.25rem;">Performance First</h3>
+                    <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.6;">
+                        Sluggish load times and laggy interfaces are unacceptable. We optimize every asset and pipeline step, targeting native speeds on TV web layers, mobile viewports, and desktop rigs alike.
+                    </p>
+                </div>
+                <!-- Pillar 2: UI Design -->
+                <div class="about-philosophy-card">
+                    <div style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 style="color: #fff; margin-bottom: 12px; font-size: 1.25rem;">Cinematic UI</h3>
+                    <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.6;">
+                        Software should look and feel premium. We integrate responsive dark themes, ambient glowing gradients, subtle micro-animations, and balanced typography to deliver a premium user experience.
+                    </p>
+                </div>
+                <!-- Pillar 3: Open Source -->
+                <div class="about-philosophy-card">
+                    <div style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 style="color: #fff; margin-bottom: 12px; font-size: 1.25rem;">Open Source</h3>
+                    <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.6;">
+                        We believe in giving back to the community. Most of our software packages, media systems, and helper scripts are completely open source and available for scrutiny and enhancement on GitHub.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Technical DNA block -->
+            <div class="about-philosophy-card" style="margin-bottom: 80px; padding: 40px; text-align: center;">
+                <h3 style="color: #fff; margin-bottom: 16px; font-size: 1.5rem;">Our Development DNA</h3>
+                <p style="color: var(--text-dim); margin-bottom: 24px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    We design, build, and deploy projects utilizing a stack tailored for efficiency, rapid rendering, and compatibility.
+                </p>
+                <ul class="tech-stack-list" style="justify-content: center;">
+                    <li class="tech-tag">HTML5 & Semantic Structure</li>
+                    <li class="tech-tag">Vanilla CSS3 (Custom Variables)</li>
+                    <li class="tech-tag">Modern JavaScript (ES6+ Module Standard)</li>
+                    <li class="tech-tag">Android SDK & Kotlin Wrappers</li>
+                    <li class="tech-tag">Gemini AI API & Intelligent Automation</li>
+                    <li class="tech-tag">Responsive Grid & Flexbox Architectures</li>
+                </ul>
+            </div>
+
+            <!-- Call to Actions -->
+            <div style="text-align: center;">
+                <a href="index.html#projects" class="btn" style="margin-right: 15px; margin-bottom: 15px;">Explore Our Projects</a>
+                <a href="contact.html" class="btn" style="background: rgba(16, 185, 129, 0.1); border-color: var(--primary); margin-bottom: 15px;">Get In Touch</a>
+            </div>
         </div>
     </main>
 
+    <!-- Shared footer component -->
     <footer-component></footer-component>
 
     <script src="js/components.js"></script>

@@ -1408,3 +1408,239 @@ body:not(:has(.hero-slider)) main>* {
     background: rgba(10, 10, 11, 0.95);
     border-bottom: 1px solid var(--border);
 }
+
+/* Container for splitting contact page content into a responsive grid layout */
+.contact-layout-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    align-items: start;
+    margin-bottom: 80px;
+}
+
+/* Glassmorphic card container hosting the contact form inputs */
+.contact-form-container {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+}
+
+/* Layout spacer wrapper separating individual input groups */
+.form-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Descriptive labels placed above input elements */
+.form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Base style for single-line text input fields with glow transition effects */
+.form-input {
+    background: rgba(10, 10, 11, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: #fff;
+    padding: 14px 18px;
+    font-family: var(--font);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focused state style for text input fields adding primary accent glow */
+.form-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+}
+
+/* Base style for multi-line text message area fields */
+.form-textarea {
+    background: rgba(10, 10, 11, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: #fff;
+    padding: 14px 18px;
+    font-family: var(--font);
+    font-size: 1rem;
+    outline: none;
+    resize: vertical;
+    min-height: 160px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focused state style for text area fields adding primary accent glow */
+.form-textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+}
+
+/* High-contrast submit button with bottom active highlights and hover glow */
+.form-submit-btn {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 36px;
+    background: rgba(16, 185, 129, 0.1);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--primary);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Shimmer overlay for submit button on hover states */
+.form-submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.12),
+        transparent
+    );
+    transition: left 0.6s ease;
+    z-index: -1;
+}
+
+/* Bottom highlight bar for the submit button appearing on hover */
+.form-submit-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: #fff;
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover styles for submit button showing shadow glow and border changes */
+.form-submit-btn:hover {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: #fff;
+    box-shadow: 0 0 24px rgba(16, 185, 129, 0.3);
+}
+
+/* Hover shimmer activation for submit button */
+.form-submit-btn:hover::before {
+    left: 100%;
+}
+
+/* Hover highlight bar activation for submit button */
+.form-submit-btn:hover::after {
+    height: 4px;
+}
+
+/* Disabled state styling for the submit button during submission */
+.form-submit-btn:disabled {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--border);
+    color: var(--text-dim);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Sidebar widget container displaying contact information fields */
+.contact-sidebar {
+    display: grid;
+    gap: 30px;
+}
+
+/* Card item containing contact details such as email, phone or address */
+.contact-detail-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+/* Hover feedback highlights for the contact detail cards */
+.contact-detail-card:hover {
+    border-color: rgba(16, 185, 129, 0.3);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Floating contact status card indicating successful message dispatch */
+.contact-status-card {
+    text-align: center;
+    padding: 40px;
+}
+
+/* Success status text color */
+.contact-success-text {
+    color: var(--primary);
+    font-weight: 800;
+}
+
+/* Grid container displaying details inside the About page layout */
+.about-section-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+/* Hover-sensitive card blocks showcasing brand philosophy */
+.about-philosophy-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+/* Hover highlight for about philosophy cards */
+.about-philosophy-card:hover {
+    border-color: rgba(16, 185, 129, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Container for listing core pillars on the About page */
+.about-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+/* Media query to reflow the contact layout grid on smaller viewports */
+@media (max-width: 992px) {
+    .contact-layout-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* Media query to reflow the about layout grid on smaller viewports */
+@media (max-width: 992px) {
+    .about-section-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+}
+

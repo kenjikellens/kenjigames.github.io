@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | KenjiGames</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Shared header component -->
+    <header-component></header-component>
+
+    <!-- Main contact section -->
+    <main style="padding-top: 15vh; min-height: 80vh;">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header" style="text-align: center;">
+                <span class="badge">Get in Touch</span>
+                <h1>Connect With <span>Us</span></h1>
+                <p>Have a question about our projects, feedback, or a business inquiry? Send us a message.</p>
+            </div>
+
+            <!-- Two-Column Form & Info Grid -->
+            <div class="contact-layout-grid">
+                
+                <!-- Left Column: Interactive Contact Form -->
+                <div class="contact-form-container">
+                    <form id="contactForm" novalidate>
+                        <!-- Form Status Area -->
+                        <div id="formStatus" style="display: none; margin-bottom: 24px;"></div>
+
+                        <div class="form-group">
+                            <label for="contactName" class="form-label">Full Name</label>
+                            <input type="text" id="contactName" class="form-input" placeholder="Your name" required autocomplete="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactEmail" class="form-label">Email Address</label>
+                            <input type="email" id="contactEmail" class="form-input" placeholder="name@domain.com" required autocomplete="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactSubject" class="form-label">Subject</label>
+                            <input type="text" id="contactSubject" class="form-input" placeholder="How can we help?" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactMessage" class="form-label">Message</label>
+                            <textarea id="contactMessage" class="form-textarea" placeholder="Write your message here..." required></textarea>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="form-submit-btn">
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right Column: Sidebar Contacts & Info -->
+                <div class="contact-sidebar">
+                    <!-- General Details -->
+                    <div class="contact-detail-card">
+                        <h3 style="color: #fff; margin-bottom: 15px; font-size: 1.25rem;">
+                            <i class="fas fa-envelope-open-text" style="color: var(--primary); margin-right: 8px;"></i> Direct Email
+                        </h3>
+                        <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; margin-bottom: 12px;">
+                            For direct inquiries, business proposals, or custom development commissions, feel free to drop an email.
+                        </p>
+                        <a href="mailto:contact@kenjigames.com" style="color: var(--primary); text-decoration: none; font-weight: 600;">
+                            contact@kenjigames.com
+                        </a>
+                    </div>
+
+                    <!-- Open Source Detail Card -->
+                    <div class="contact-detail-card">
+                        <h3 style="color: #fff; margin-bottom: 15px; font-size: 1.25rem;">
+                            <i class="fab fa-github" style="color: var(--primary); margin-right: 8px;"></i> Open Source
+                        </h3>
+                        <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; margin-bottom: 12px;">
+                            Found a bug in IVIDS or want to contribute to the music organizing library? Check our GitHub repository index.
+                        </p>
+                        <a href="https://github.com/kenjikellens" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-weight: 600;">
+                            github.com/kenjikellens
+                        </a>
+                    </div>
+
+                    <!-- Social Network Details -->
+                    <div class="contact-detail-card" style="text-align: center;">
+                        <h3 style="color: #fff; margin-bottom: 15px; font-size: 1.25rem;">Follow Our Journey</h3>
+                        <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">
+                            Stay updated on new projects, YouTube cinematic releases, and code announcements.
+                        </p>
+                        <div class="social-links" style="margin-top: 0;">
+                            <a href="https://github.com/kenjikellens" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://youtube.com/@kenjikellens" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Shared footer component -->
+    <footer-component></footer-component>
+
+    <script src="js/components.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+
+</html>
