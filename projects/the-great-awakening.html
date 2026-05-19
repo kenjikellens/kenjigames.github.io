@@ -80,15 +80,15 @@
                 </p>
                 <h3>Hash-Based SPA Routing</h3>
                 <p>
-                    A custom router (`js/router.js`) tracks hash modifications (e.g., `#home`, `#dossiers`, `#dossier/slug`). It dynamically loads fragment partials from `pages/fragments/` and injects dossier HTML from `pages/dossiers/` into the content shell, extracting styles to preserve unique layouts.
+                    A custom router (<code>js/router.js</code>) tracks hash modifications (e.g., <code>#home</code>, <code>#dossiers</code>, <code>#dossier/slug</code>). It dynamically loads fragment partials from <code>pages/fragments/</code> and injects dossier HTML from <code>pages/dossiers/</code> into the content shell, extracting styles to preserve unique layouts.
                 </p>
                 <h3>JSON Database Layer</h3>
                 <p>
-                    A centralized flat-file database (`data/dossiers.js`) catalogs metadata for all research records. The Dossier Manager (`js/dossier-manager.js`) reads this file to build index lists, update the dynamic mega menu, and drive the local search engine.
+                    A centralized flat-file database (<code>data/dossiers.js</code>) catalogs metadata for all research records. The Dossier Manager (<code>js/dossier-manager.js</code>) reads this file to build index lists, update the dynamic mega menu, and drive the local search engine.
                 </p>
                 <h3>AI Chat & Theme Utilities</h3>
                 <p>
-                    An inline chat module (`js/ai-chat.js`) powers the helper drawer widget. User options and theme scales are governed by the `theme-manager.js`, saving selections to localStorage for seamless persistence.
+                    An inline chat module (<code>js/ai-chat.js</code>) powers the helper drawer widget. User options and theme scales are governed by the <code>theme-manager.js</code>, saving selections to localStorage for seamless persistence.
                 </p>
                 
                 <h3>Technical Stack</h3>
@@ -103,7 +103,7 @@
 
                 <h3>Getting Started</h3>
                 <p>
-                    Clone the source and serve the directory using a lightweight web server (e.g. `python -m http.server 8000` or VS Code Live Server) to enable `fetch()` functionality for the dynamic dossier fragments.
+                    Clone the source and serve the directory using a lightweight web server (e.g. <code>python -m http.server 8000</code> or VS Code Live Server) to enable <code>fetch()</code> functionality for the dynamic dossier fragments.
                 </p>
             </div>
         </section>
