@@ -4,24 +4,43 @@
  * and manages global site functionality (Theme, Navigation).
  */
 
+// Immediately apply theme and complexity classes from localStorage or system theme to avoid FOUC
+(function() {
+    let savedTheme = localStorage.getItem('theme');
+    if (!savedTheme) {
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        savedTheme = prefersLight ? 'light' : 'dark';
+    }
+    document.body.classList.toggle('light-theme', savedTheme === 'light');
+
+    const savedComplexity = localStorage.getItem('complexity') || 'modern';
+    document.body.classList.toggle('minimal-theme', savedComplexity === 'minimal');
+})();
+
 class ComponentLoader {
+    /**
+     * Initializes base calculations and loads dynamic navigation layouts.
+     */
     constructor() {
         this.basePath = this.calculateBasePath();
         this.init();
     }
 
     /**
-     * Calculates the relative path to the root directory
+     * Calculates the relative path to the root directory.
+     * This ensures assets and URLs are loaded correctly regardless of folder depth.
+     * @returns {string} Relative path offset (e.g. '../' or empty string).
      */
     calculateBasePath() {
-        // We look for a marker or count slashes
-        // In this project, if we are in 'projects/', we need '../'
         const path = window.location.pathname;
         return (path.includes('/projects/') || path.includes('\\projects\\')) ? '../' : '';
     }
 
     /**
-     * Injects a component into a placeholder
+     * Injects a component HTML file into a specified placeholder selector.
+     * Reads files from the components directory and fixes local relative links.
+     * @param {string} selector - Selector tag to replace.
+     * @param {string} file - Filename within components folder.
      */
     async injectComponent(selector, file) {
         const target = document.querySelector(selector);
@@ -48,7 +67,9 @@ class ComponentLoader {
     }
 
     /**
-     * Actions to perform after a specific component is loaded
+     * Triggers configuration methods for navigation and themes after component load.
+     * Binds event listeners and states when header.html is successfully loaded.
+     * @param {string} file - Filename that finished loading.
      */
     postLoadActions(file) {
         if (file === 'header.html') {
@@ -59,7 +80,8 @@ class ComponentLoader {
     }
 
     /**
-     * Highlights the active navigation link based on current URL
+     * Inspects the current window location to apply active states to navigation items.
+     * Adds or removes styling highlights on header anchors to indicate current position.
      */
     handleActiveLinks() {
         const path = window.location.pathname;
@@ -80,26 +102,41 @@ class ComponentLoader {
     }
 
     /**
-     * Initializes the theme toggle functionality
+     * Coordinates click events and icon states for theme and complexity selectors.
+     * Saves preferences to localStorage and updates class labels on the document body.
      */
     initThemeToggle() {
         const themeToggle = document.getElementById('themeToggle');
-        if (!themeToggle) return;
+        const complexityToggle = document.getElementById('complexityToggle');
 
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        document.body.classList.toggle('light-theme', currentTheme === 'light');
-        themeToggle.innerHTML = currentTheme === 'light' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-
-        themeToggle.addEventListener('click', () => {
-            const isLight = document.body.classList.toggle('light-theme');
-            const newTheme = isLight ? 'light' : 'dark';
-            localStorage.setItem('theme', newTheme);
+        // Initialize theme button icon based on current state
+        if (themeToggle) {
+            const isLight = document.body.classList.contains('light-theme');
             themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        });
+            
+            themeToggle.addEventListener('click', () => {
+                const isNowLight = document.body.classList.toggle('light-theme');
+                localStorage.setItem('theme', isNowLight ? 'light' : 'dark');
+                themeToggle.innerHTML = isNowLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+        }
+
+        // Initialize complexity button icon based on current state
+        if (complexityToggle) {
+            const isMinimal = document.body.classList.contains('minimal-theme');
+            complexityToggle.innerHTML = isMinimal ? '<i class="fas fa-toggle-off"></i>' : '<i class="fas fa-toggle-on"></i>';
+
+            complexityToggle.addEventListener('click', () => {
+                const isNowMinimal = document.body.classList.toggle('minimal-theme');
+                localStorage.setItem('complexity', isNowMinimal ? 'minimal' : 'modern');
+                complexityToggle.innerHTML = isNowMinimal ? '<i class="fas fa-toggle-off"></i>' : '<i class="fas fa-toggle-on"></i>';
+            });
+        }
     }
 
     /**
-     * Handles header styling on scroll
+     * Adds scroll event listeners to dynamically adjust header size and background.
+     * Enhances navigation contrast when page is scrolled down past 50 pixels.
      */
     initHeaderScroll() {
         const header = document.querySelector('.main-header');
@@ -114,6 +151,10 @@ class ComponentLoader {
         });
     }
 
+    /**
+     * Entry point coordinate loader fetching shared header and footer markup.
+     * Injects components sequentially and sets up the primary global UI states.
+     */
     async init() {
         // Load header first, then footer
         await this.injectComponent('header-component', 'header.html');

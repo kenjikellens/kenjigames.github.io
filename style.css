@@ -1,12 +1,77 @@
+/* Core system color tokens and typography configurations */
 :root {
     --bg-main: #0a0a0b;
     --text-main: #ffffff;
     --text-dim: #a1a1aa;
     --primary: #10b981;
     --border: rgba(255, 255, 255, 0.1);
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-bg-hover: rgba(255, 255, 255, 0.05);
+    --header-bg: rgba(10, 10, 11, 0.75);
+    --header-bg-scroll: rgba(10, 10, 11, 0.95);
+    --footer-bg: rgba(255, 255, 255, 0.02);
+    --btn-text: #ffffff;
+    --btn-bg: rgba(255, 255, 255, 0.05);
+    --btn-bg-hover: rgba(255, 255, 255, 0.08);
+    --btn-border: rgba(255, 255, 255, 0.1);
     --header-h: 80px;
     --font: 'Outfit', sans-serif;
 }
+
+/* Light + Modern Theme style variable override configurations */
+body.light-theme {
+    --bg-main: #f8fafc;
+    --text-main: #0f172a;
+    --text-dim: #475569;
+    --primary: #059669;
+    --border: rgba(15, 23, 42, 0.08);
+    --card-bg: rgba(15, 23, 42, 0.03);
+    --card-bg-hover: rgba(15, 23, 42, 0.05);
+    --header-bg: rgba(248, 250, 252, 0.8);
+    --header-bg-scroll: rgba(248, 250, 252, 0.95);
+    --footer-bg: rgba(15, 23, 42, 0.02);
+    --btn-text: #0f172a;
+    --btn-bg: rgba(15, 23, 42, 0.05);
+    --btn-bg-hover: rgba(15, 23, 42, 0.08);
+    --btn-border: rgba(15, 23, 42, 0.1);
+}
+
+/* Dark + Minimalist style variable override configurations */
+body.minimal-theme {
+    --bg-main: #121214;
+    --text-main: #f3f4f6;
+    --text-dim: #9ca3af;
+    --primary: #10b981;
+    --border: rgba(255, 255, 255, 0.12);
+    --card-bg: #1e1e22;
+    --card-bg-hover: #27272c;
+    --header-bg: #121214;
+    --header-bg-scroll: #121214;
+    --footer-bg: #121214;
+    --btn-text: #f3f4f6;
+    --btn-bg: #1e1e22;
+    --btn-bg-hover: #27272c;
+    --btn-border: rgba(255, 255, 255, 0.12);
+}
+
+/* Light + Minimalist style variable override configurations */
+body.light-theme.minimal-theme {
+    --bg-main: #ffffff;
+    --text-main: #111827;
+    --text-dim: #6b7280;
+    --primary: #059669;
+    --border: rgba(0, 0, 0, 0.12);
+    --card-bg: #f3f4f6;
+    --card-bg-hover: #e5e7eb;
+    --header-bg: #ffffff;
+    --header-bg-scroll: #ffffff;
+    --footer-bg: #ffffff;
+    --btn-text: #111827;
+    --btn-bg: #f3f4f6;
+    --btn-bg-hover: #e5e7eb;
+    --btn-border: rgba(0, 0, 0, 0.12);
+}
+
 
 * {
     margin: 0;
@@ -138,9 +203,9 @@ body::after {
     z-index: 1000;
     backdrop-filter: blur(24px);
     /* Increased blur */
-    background: rgba(10, 10, 11, 0.75);
+    background: var(--header-bg);
     /* More transparent for glass effect */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--border);
     /* Sophisticated glass border */
     display: flex;
     align-items: center;
@@ -158,7 +223,7 @@ body::after {
     font-size: 1.5rem;
     font-weight: 800;
     text-decoration: none;
-    color: #fff;
+    color: var(--text-main);
     letter-spacing: -1px;
 }
 
@@ -197,7 +262,7 @@ body::after {
 
 .nav-item:hover,
 .nav-item.active:hover {
-    color: #fff;
+    color: var(--text-main);
 }
 
 .nav-item.active {
@@ -221,7 +286,7 @@ body::after {
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(10, 10, 11, 0.95);
+    background: var(--header-bg-scroll);
     backdrop-filter: blur(20px);
     border: 1px solid var(--border);
     min-width: 180px;
@@ -251,8 +316,8 @@ body::after {
 
 .dropdown-content a:hover,
 .dropdown-content a.active {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    background: var(--btn-bg-hover);
 }
 
 /* Dropdown Item Underline (official pop-up rule) */
@@ -726,13 +791,13 @@ body::after {
     position: relative;
     display: inline-flex;
     padding: 16px 36px;
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
+    background: var(--btn-bg);
+    color: var(--btn-text);
     text-decoration: none;
     font-weight: 700;
     font-size: 1rem;
     border-radius: 4px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--btn-border);
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
@@ -770,7 +835,7 @@ body::after {
 }
 
 .btn:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--btn-bg-hover);
     border-color: var(--primary);
     box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
 }
@@ -1035,7 +1100,7 @@ body::after {
     display: flex;
     gap: 16px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 8px;
     transition: all 0.3s ease;
@@ -1043,7 +1108,7 @@ body::after {
 
 .feature-item:hover {
     border-color: rgba(16, 185, 129, 0.4);
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--card-bg-hover);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -1245,7 +1310,7 @@ body:not(:has(.hero-slider)) main>* {
 
 /* Product Showcase */
 .product-showcase {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 40px;
@@ -1274,7 +1339,7 @@ body:not(:has(.hero-slider)) main>* {
 
 .product-showcase:hover {
     border-color: rgba(16, 185, 129, 0.4);
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--card-bg-hover);
     box-shadow: 
         0 10px 30px -10px rgba(0, 0, 0, 0.5),
         0 0 20px rgba(16, 185, 129, 0.05);
@@ -1330,7 +1395,7 @@ body:not(:has(.hero-slider)) main>* {
 }
 /* Premium Footer Styling */
 .main-footer {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--footer-bg);
     border-top: 1px solid var(--border);
     padding: 80px 0 40px;
     margin-top: 80px;
@@ -1405,7 +1470,7 @@ body:not(:has(.hero-slider)) main>* {
 
 .main-header.scrolled {
     height: 70px;
-    background: rgba(10, 10, 11, 0.95);
+    background: var(--header-bg-scroll);
     border-bottom: 1px solid var(--border);
 }
 
@@ -1420,7 +1485,7 @@ body:not(:has(.hero-slider)) main>* {
 
 /* Glassmorphic card container hosting the contact form inputs */
 .contact-form-container {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 40px;
@@ -1568,7 +1633,7 @@ body:not(:has(.hero-slider)) main>* {
 
 /* Card item containing contact details such as email, phone or address */
 .contact-detail-card {
-    background: rgba(255, 255, 255, 0.01);
+    background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 30px;
@@ -1578,7 +1643,7 @@ body:not(:has(.hero-slider)) main>* {
 /* Hover feedback highlights for the contact detail cards */
 .contact-detail-card:hover {
     border-color: rgba(16, 185, 129, 0.3);
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--card-bg-hover);
 }
 
 /* Floating contact status card indicating successful message dispatch */
@@ -1604,7 +1669,7 @@ body:not(:has(.hero-slider)) main>* {
 
 /* Hover-sensitive card blocks showcasing brand philosophy */
 .about-philosophy-card {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 30px;
@@ -1614,7 +1679,7 @@ body:not(:has(.hero-slider)) main>* {
 /* Hover highlight for about philosophy cards */
 .about-philosophy-card:hover {
     border-color: rgba(16, 185, 129, 0.3);
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--card-bg-hover);
 }
 
 /* Container for listing core pillars on the About page */
@@ -1642,5 +1707,100 @@ body:not(:has(.hero-slider)) main>* {
         gap: 40px;
         text-align: center;
     }
+}
+
+/* ==========================================================================
+   Multi-Mode Layout Theme & Complexity Specific Overrides
+   ========================================================================== */
+
+/* Ambient drift radial background gradients for Light + Modern mode */
+body.light-theme::before {
+    background:
+        radial-gradient(ellipse 100% 80% at 15% 20%, rgba(16, 185, 129, 0.05), transparent 55%),
+        radial-gradient(ellipse 90% 70% at 85% 75%, rgba(59, 130, 246, 0.04), transparent 50%),
+        radial-gradient(ellipse 70% 50% at 50% 100%, rgba(139, 92, 246, 0.03), transparent 45%) !important;
+}
+
+/* Low-contrast breathing grid layout lines for Light + Modern mode */
+body.light-theme::after {
+    background-image:
+        linear-gradient(rgba(15, 23, 42, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.015) 1px, transparent 1px) !important;
+}
+
+/* Disable transitions and animations globally when minimal complexity is active */
+body.minimal-theme * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Disable moving backgrounds, grid overlays, and soft visual glows in minimal mode */
+body.minimal-theme::before,
+body.minimal-theme::after,
+body.minimal-theme html::before,
+body.minimal-theme .section.alternate::before,
+body.minimal-theme #projects::before,
+body.minimal-theme #projects::after,
+body.minimal-theme:not(:has(.hero-slider)) main::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* Disable blur glass effects on containers, headers, and dropdowns in minimal mode */
+body.minimal-theme .main-header,
+body.minimal-theme .dropdown-content,
+body.minimal-theme .contact-form-container {
+    backdrop-filter: none !important;
+}
+
+/* Hide background images in the homepage hero slider for a flat minimal presentation */
+body.minimal-theme .slide-bg {
+    display: none !important;
+}
+
+/* Remove decorative circular scan lines and geometric stripes inside hero slides in minimal mode */
+body.minimal-theme .slide::before,
+body.minimal-theme .slide::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Force immediate static text overlays inside the hero slider in minimal mode */
+body.minimal-theme .slide-content > * {
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+/* Disable moving glints and linear text gradients in headers, rendering static color instead */
+body.minimal-theme .slide h1 span,
+body.minimal-theme .section-header h1 span,
+body.minimal-theme .section-header h2 span {
+    background: none !important;
+    -webkit-text-fill-color: var(--primary) !important;
+    color: var(--primary) !important;
+}
+
+/* Remove glowing outlines and drop shadow hover effects in minimal mode */
+body.minimal-theme .btn:hover,
+body.minimal-theme .product-showcase:hover,
+body.minimal-theme .feature-item:hover,
+body.minimal-theme .contact-detail-card:hover,
+body.minimal-theme .about-philosophy-card:hover,
+body.minimal-theme .form-submit-btn:hover {
+    box-shadow: none !important;
+}
+
+/* Disable light shimmer reflections on action buttons in minimal mode */
+body.minimal-theme .btn::before,
+body.minimal-theme .btn::after,
+body.minimal-theme .form-submit-btn::before,
+body.minimal-theme .form-submit-btn::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Strip text-shadow glow effect from main logo spans in minimal mode */
+body.minimal-theme .logo span {
+    text-shadow: none !important;
 }
 
