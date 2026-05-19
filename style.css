@@ -964,14 +964,26 @@ body::after {
 
 /* First slide light theme background override for high-contrast visibility */
 body.light-theme .welcome-bg {
-    background-image: linear-gradient(45deg, var(--bg-main), rgba(16, 185, 129, 0.06)) !important;
+    background-image: linear-gradient(rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.55)), url('resources/img/currents-gatefold-2x.jpg') !important;
 }
 
 @media (max-width: 767px) or (orientation: portrait) {
     /* First slide light theme mobile background override */
     body.light-theme .welcome-bg {
-        background-image: linear-gradient(45deg, var(--bg-main), rgba(16, 185, 129, 0.06)) !important;
+        background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('resources/img/currents-gatefold-1x.jpg') !important;
     }
+}
+
+/* Ensure slide typography stands out with clean white colors over the dark cover image in Light Modern mode */
+body.light-theme .slide:has(.welcome-bg) h1,
+body.light-theme .slide[data-slide="1"] h1 {
+    color: #ffffff !important;
+}
+
+/* Ensure paragraph slide text stands out over the dark cover image in Light Modern mode */
+body.light-theme .slide:has(.welcome-bg) p,
+body.light-theme .slide[data-slide="1"] p {
+    color: rgba(255, 255, 255, 0.85) !important;
 }
 
 /* Second slide background container displaying YouTube channel details */
