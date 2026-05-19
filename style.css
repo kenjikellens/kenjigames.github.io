@@ -377,6 +377,7 @@ body::after {
     height: 100vh;
     width: 100%;
     background: #0a0a0b;
+    color: var(--text-main);
     overflow: hidden;
     isolation: isolate;
     /* Always enforce dark theme variables inside the hero slider */
@@ -388,6 +389,17 @@ body::after {
     --btn-bg: rgba(255, 255, 255, 0.05);
     --btn-bg-hover: rgba(255, 255, 255, 0.08);
     --btn-border: rgba(255, 255, 255, 0.12);
+    --border: rgba(255, 255, 255, 0.12);
+}
+
+/* Force the slide h1 to inherit the slider's local text color variable */
+.hero-slider .slide h1 {
+    color: var(--text-main) !important;
+}
+
+/* Force the slide paragraph to use the slider's local dim color variable */
+.hero-slider .slide p {
+    color: var(--text-dim) !important;
 }
 
 /* Extra depth: soft orbs behind slides (visible in letterbox / gradient areas) */
