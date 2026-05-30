@@ -418,6 +418,7 @@ body::after {
     display: inline-block;
 }
 
+/* Absolute-positioned flyout panel listing project sub-links under the Projects nav item */
 .dropdown-content {
     position: absolute;
     top: 100%;
@@ -433,6 +434,18 @@ body::after {
     padding: 10px 0;
     border-radius: 4px;
     z-index: 1001;
+}
+
+/* Invisible hover-bridge that spans the gap between the nav-item trigger and the
+   dropdown panel, preventing the menu from closing when the cursor travels downward */
+.dropdown-content::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    background: transparent;
 }
 
 .dropdown:hover .dropdown-content {
@@ -1631,8 +1644,9 @@ body:not(:has(.hero-slider)) main>* {
     }
 }
 
+/* Scrolled header state — only changes the background opacity for contrast,
+   height stays at var(--header-h) to prevent layout shift on scroll */
 .main-header.scrolled {
-    height: 70px;
     background: var(--header-bg-scroll);
     border-bottom: 1px solid var(--border);
 }
