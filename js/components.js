@@ -101,6 +101,8 @@ class ComponentLoader {
     handleActiveLinks() {
         const path = window.location.pathname;
         const navItems = document.querySelectorAll('.nav-item');
+        const dropdownItems = document.querySelectorAll('.dropdown-content a');
+        const isProjectPage = path.includes('/projects/');
         
         navItems.forEach(item => {
             const href = item.getAttribute('href');
@@ -108,9 +110,19 @@ class ComponentLoader {
             const isHome = path.endsWith('/') || path.endsWith('index.html');
             const hrefPath = href.split('/').pop();
             
-            if (path.includes(hrefPath) && hrefPath !== 'index.html') {
+            if (isProjectPage && item.dataset.page === 'projects') {
+                item.classList.add('active');
+            } else if (path.includes(hrefPath) && hrefPath !== 'index.html') {
                 item.classList.add('active');
             } else if (isHome && hrefPath === 'index.html') {
+                item.classList.add('active');
+            }
+        });
+
+        dropdownItems.forEach(item => {
+            const hrefPath = item.getAttribute('href').split('/').pop();
+
+            if (path.endsWith(hrefPath)) {
                 item.classList.add('active');
             }
         });
