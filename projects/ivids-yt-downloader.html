@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IVIDS YT Downloader | KenjiGames</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header-component></header-component>
+
+    <main style="padding-top: 15vh;">
+        <!-- Hero section with project title, badge, and tagline -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge">Multi-Platform</span>
+                    <h1>IVIDS YT <span>Downloader</span></h1>
+                    <p>Premium YouTube audio downloader with glassmorphism UI, playlist support, and triple-runtime architecture.</p>
+                </div>
+
+                <!-- Intro paragraph and action buttons -->
+                <div class="content-block" style="margin-bottom: 80px;">
+                    <p style="font-size: 1.25rem; color: var(--text-dim); margin-bottom: 32px; max-width: 800px;">
+                        IVIDS YT Downloader is a high-performance YouTube audio extraction tool accessible through
+                        three parallel pathways: a Python web server, an Electron desktop app, and an Android WebView
+                        wrapper. Paste any YouTube URL or full playlist, pick your audio format and quality, and let the
+                        concurrent download engine handle the rest.
+                    </p>
+                    <div class="hero-btns" style="display: flex; flex-wrap: wrap; gap: 16px;">
+                        <a href="https://github.com/kenjikellens/IVIDS-YT-MP3-Downloader" target="_blank"
+                            rel="noopener" class="btn">View Repository</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Details grid: overview text + feature highlights -->
+        <section class="project-details">
+            <div class="container">
+                <div class="details-grid">
+                    <div class="details-content">
+                        <h2>Three Runtimes, One Interface</h2>
+                        <p>
+                            Most downloaders lock you into a single platform. IVIDS YT Downloader breaks that limitation
+                            with a unified glassmorphism web UI that runs identically across three execution modes: a
+                            lightweight Python HTTP server with REST API and Server-Sent Events streaming, a native
+                            Electron desktop application with secure IPC bridge, and a mobile Android WebView wrapper
+                            for on-the-go access.
+                        </p>
+                        <p>
+                            The web UI automatically detects its host runtime — Electron IPC or Python SSE — and adapts
+                            its communication layer accordingly. This means developers maintain a single codebase while
+                            delivering native-feel experiences on Windows, Android, and any modern browser.
+                        </p>
+                    </div>
+                    <div class="details-features">
+                        <div class="feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <div class="feature-text">
+                                <h4>Concurrent Downloads</h4>
+                                <p>Thread pool executor with configurable concurrency for parallel track downloading and real-time progress tracking.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-wand-magic-sparkles"></i>
+                            <div class="feature-text">
+                                <h4>Auto-Dependency Setup</h4>
+                                <p>Automatically detects, downloads, and configures yt-dlp and FFmpeg if not present on the system.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-list-ol"></i>
+                            <div class="feature-text">
+                                <h4>Playlist Range Control</h4>
+                                <p>Download entire playlists or target specific tracks using custom start/end range bounds or individual selection.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deep-dive technical content -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Technical Architecture</h2>
+                <p>
+                    The application is built around a dual-backend architecture. On the Python side,
+                    <code>StartUp.py</code> spins up a <code>ThreadingHTTPServer</code> with custom route handlers that
+                    serve static UI assets and expose REST/SSE endpoints for download orchestration. On the Electron
+                    side, <code>main.js</code> creates a frameless <code>BrowserWindow</code> and uses a secure
+                    <code>contextBridge</code> preload script to expose IPC channels between the renderer and the
+                    Node.js <code>downloadManager.js</code> backend.
+                </p>
+                <h3>Server-Sent Events Streaming</h3>
+                <p>
+                    The Python server establishes long-lived SSE connections for download sessions. As yt-dlp processes
+                    tracks, the <code>DownloadManager</code> class parses stdout in real-time, extracting percentage
+                    values from <code>[download]</code> log lines and broadcasting them as structured SSE events. A
+                    mutex lock prevents concurrent download sessions on the same server instance.
+                </p>
+                <h3>Electron IPC Bridge</h3>
+                <p>
+                    The desktop variant uses Electron's <code>contextIsolation</code> security model. The
+                    <code>preload.js</code> script exposes a tightly scoped <code>window.electronAPI</code> object with
+                    invoke/send channels for directory selection, download control, and window management — all without
+                    enabling raw <code>nodeIntegration</code> in the renderer.
+                </p>
+                <h3>Unified Runtime Detection</h3>
+                <p>
+                    The shared web UI (<code>renderer.js</code>) performs runtime detection at startup: if
+                    <code>window.electronAPI</code> exists, it routes through IPC; otherwise it falls back to
+                    HTTP fetch and EventSource APIs targeting the Python server. This single-codebase approach
+                    eliminates UI duplication across platforms.
+                </p>
+
+                <h3>Technical Stack</h3>
+                <ul class="tech-stack-list">
+                    <li class="tech-tag">Python HTTP Server & SSE</li>
+                    <li class="tech-tag">Electron & Context Bridge IPC</li>
+                    <li class="tech-tag">yt-dlp & FFmpeg Integration</li>
+                    <li class="tech-tag">Concurrent ThreadPoolExecutor</li>
+                    <li class="tech-tag">Glassmorphism CSS UI</li>
+                    <li class="tech-tag">Android WebView Wrapper</li>
+                </ul>
+
+                <h3>Getting Started</h3>
+                <p>
+                    <strong>Python Server:</strong> Run <code>python StartUp.py</code> to spin up the local web server
+                    on port 8080. Your default browser opens automatically and is ready to process downloads.
+                </p>
+                <p>
+                    <strong>Electron Desktop:</strong> Install dependencies with <code>npm install</code>, then launch
+                    with <code>npm start</code>. Build a portable Windows EXE via <code>build.bat</code>.
+                </p>
+                <p>
+                    <strong>Android:</strong> Point a WebView client to the Python server URL
+                    (<code>http://&lt;your-pc-ip&gt;:&lt;port&gt;</code>) for mobile access.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer-component></footer-component>
+
+    <script src="../js/components.js"></script>
+</body>
+
+</html>
