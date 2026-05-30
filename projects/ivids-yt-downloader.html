@@ -20,16 +20,16 @@
                 <div class="section-header">
                     <span class="badge">Multi-Platform</span>
                     <h1>IVIDS YT <span>Downloader</span></h1>
-                    <p>Premium YouTube audio downloader with glassmorphism UI, playlist support, and triple-runtime architecture.</p>
+                    <p>A YouTube audio downloader for saving tracks and playlists in the format and quality you need.</p>
                 </div>
 
                 <!-- Intro paragraph and action buttons -->
                 <div class="content-block" style="margin-bottom: 80px;">
                     <p style="font-size: 1.25rem; color: var(--text-dim); margin-bottom: 32px; max-width: 800px;">
-                        IVIDS YT Downloader is a high-performance YouTube audio extraction tool accessible through
-                        three parallel pathways: a Python web server, an Electron desktop app, and an Android WebView
-                        wrapper. Paste any YouTube URL or full playlist, pick your audio format and quality, and let the
-                        concurrent download engine handle the rest.
+                        IVIDS YT Downloader helps you turn YouTube videos and playlists into local audio files for
+                        offline listening, archiving, editing, or moving into your own music library. Paste a video or
+                        playlist link, choose the output format and quality, select a folder, and follow the progress as
+                        each track is processed.
                     </p>
                     <div class="hero-btns" style="display: flex; flex-wrap: wrap; gap: 16px;">
                         <a href="https://github.com/kenjikellens/IVIDS-YT-MP3-Downloader" target="_blank"
@@ -44,33 +44,32 @@
             <div class="container">
                 <div class="details-grid">
                     <div class="details-content">
-                        <h2>Three Runtimes, One Interface</h2>
+                        <h2>Simple Downloads For Tracks And Playlists</h2>
                         <p>
-                            Most downloaders lock you into a single platform. IVIDS YT Downloader breaks that limitation
-                            with a unified glassmorphism web UI that runs identically across three execution modes: a
-                            lightweight Python HTTP server with REST API and Server-Sent Events streaming, a native
-                            Electron desktop application with secure IPC bridge, and a mobile Android WebView wrapper
-                            for on-the-go access.
+                            The app is made for practical downloading sessions: grab one song, convert a long playlist,
+                            or target only a specific range of tracks. It gives clear controls for format, quality,
+                            output location, and playlist handling, so the workflow stays understandable even when you
+                            are processing a lot of files.
                         </p>
                         <p>
-                            The web UI automatically detects its host runtime — Electron IPC or Python SSE — and adapts
-                            its communication layer accordingly. This means developers maintain a single codebase while
-                            delivering native-feel experiences on Windows, Android, and any modern browser.
+                            Because the interface is shared across its versions, you do not have to relearn the tool
+                            depending on where you open it. The desktop, browser, and mobile-access versions all keep
+                            the same core actions: paste, choose settings, download, and monitor progress.
                         </p>
                     </div>
                     <div class="details-features">
                         <div class="feature-item">
                             <i class="fas fa-bolt"></i>
                             <div class="feature-text">
-                                <h4>Concurrent Downloads</h4>
-                                <p>Thread pool executor with configurable concurrency for parallel track downloading and real-time progress tracking.</p>
+                                <h4>Batch Downloads</h4>
+                                <p>Process multiple tracks from a playlist while keeping clear progress feedback for each session.</p>
                             </div>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-wand-magic-sparkles"></i>
                             <div class="feature-text">
-                                <h4>Auto-Dependency Setup</h4>
-                                <p>Automatically detects, downloads, and configures yt-dlp and FFmpeg if not present on the system.</p>
+                                <h4>Guided Setup</h4>
+                                <p>Helps prepare the required download and conversion tools so the app is easier to start using.</p>
                             </div>
                         </div>
                         <div class="feature-item">
@@ -88,9 +87,9 @@
         <!-- Deep-dive technical content -->
         <section class="content-section">
             <div class="container">
-                <h2>Technical Architecture</h2>
+                <h2>Technical Notes</h2>
                 <p>
-                    The application is built around a dual-backend architecture. On the Python side,
+                    The product experience is supported by a dual-backend architecture. On the Python side,
                     <code>StartUp.py</code> spins up a <code>ThreadingHTTPServer</code> with custom route handlers that
                     serve static UI assets and expose REST/SSE endpoints for download orchestration. On the Electron
                     side, <code>main.js</code> creates a frameless <code>BrowserWindow</code> and uses a secure

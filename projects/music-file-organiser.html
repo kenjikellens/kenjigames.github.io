@@ -56,22 +56,22 @@
                         <div class="feature-item">
                             <i class="fas fa-brain"></i>
                             <div class="feature-text">
-                                <h4>Gemini AI Core</h4>
-                                <p>Leverages large language models to predict metadata from even the most fragmented filenames.</p>
+                                <h4>Gemini Suggestions</h4>
+                                <p>Suggests usable metadata even when filenames are fragmented, inconsistent, or incomplete.</p>
                             </div>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-folder-open"></i>
                             <div class="feature-text">
-                                <h4>Dynamic Structuring</h4>
-                                <p>Automatically rebuilds your library's folder hierarchy based on Artist, Album, or Genre.</p>
+                                <h4>Clean Folder Structure</h4>
+                                <p>Rebuilds your music folders around artist, album, or genre so libraries are easier to browse.</p>
                             </div>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-file-audio"></i>
                             <div class="feature-text">
-                                <h4>Atomic Tagging</h4>
-                                <p>Safely updates ID3v2.4 and Vorbis comment tags without compromising the audio data.</p>
+                                <h4>Safer Tag Updates</h4>
+                                <p>Updates music tags carefully while preserving the original audio data.</p>
                             </div>
                         </div>
                     </div>
@@ -81,13 +81,13 @@
 
         <section class="content-section">
             <div class="container">
-                <h2>Technical Architecture</h2>
+                <h2>How It Works</h2>
                 <p>
-                    Music File Organiser is built on a high-performance Python backend, designed to handle large-scale file operations with atomic safety. The core engine utilizes a multi-threaded approach to scan directories, extract existing metadata, and communicate with the Gemini API for tag prediction.
+                    Music File Organiser scans the folder you choose, reads whatever metadata already exists, and asks Gemini to help infer missing artist, title, album, year, and track information from filenames and surrounding context. You can then use those suggestions to create a cleaner library structure without manually fixing every file one by one.
                 </p>
                 <h3>The Power of Gemini in Metadata Prediction</h3>
                 <p>
-                    The heart of the application is the Gemini-powered prediction engine. Traditional taggers rely on exact matches against online databases, which often fail when filenames are non-standard. By utilizing an LLM, Music File Organiser can analyze the context of a filename (e.g., "01-kenjigames-track-final-v2.mp3") and intelligently deduce the artist and title by comparing it against its vast knowledge of music history.
+                    Traditional taggers often fail when filenames are incomplete, inconsistent, or full of personal naming conventions. Gemini helps interpret those messy names and produce usable metadata suggestions, making the app handy for old downloads, ripped CDs, archive folders, and mixed-format collections.
                 </p>
                 <h3>File System Automation & Safety</h3>
                 <p>
