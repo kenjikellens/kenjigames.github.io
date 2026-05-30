@@ -19,12 +19,12 @@
                 <div class="section-header">
                     <span class="badge">Multi-Platform</span>
                     <h1>Experience <span>IVIDS</span></h1>
-                    <p>A cinematic media interface for browsing and playing video comfortably on TV, mobile, and desktop.</p>
+                    <p>An ad-free streaming and Live TV hub that brings movies, shows, channels, and personal media into one place.</p>
                 </div>
 
                 <div class="content-block" style="margin-bottom: 80px;">
                     <p style="font-size: 1.25rem; color: var(--text-dim); margin-bottom: 32px; max-width: 800px;">
-                        IVIDS is a media player experience for people who want a clean, fast, TV-friendly way to browse and watch their video library. It is designed around the living-room experience first, with large visual layouts, smooth focus movement, and controls that feel natural whether you use a remote, keyboard, touch screen, or browser.
+                        IVIDS is built around a simple idea: watching should feel calm, open, and under your control. Instead of jumping between apps, ads, subscriptions, and cluttered menus, IVIDS aims to become one cinematic home for streaming, Live TV, and your own media library.
                     </p>
                     <div class="hero-btns" style="display: flex; flex-wrap: wrap; gap: 16px;">
                         <a href="https://github.com/kenjikellens/IVIDS" target="_blank" rel="noopener" class="btn">View Repository</a>
@@ -37,34 +37,34 @@
             <div class="container">
                 <div class="details-grid">
                     <div class="details-content">
-                        <h2>The Cinematic TV & Browser Player</h2>
+                        <h2>Streaming, Live TV, And Your Library Together</h2>
                         <p>
-                            Traditional streaming interfaces often work well with a mouse, but feel awkward on a TV. IVIDS focuses on the opposite: big-screen navigation, clear media cards, predictable remote-control movement, and an edge-to-edge viewing experience that makes a personal media collection feel like a polished entertainment hub.
+                            Most entertainment setups are fragmented. One app has movies, another has shows, another has live channels, and many of them surround the actual content with ads or distracting recommendations. IVIDS tries to bring those experiences back into one clean player, with the focus on what you want to watch instead of what a platform wants to push.
                         </p>
                         <p>
-                            It is useful when you want the same player concept across Android TV, Smart TV-style screens, mobile, and regular browsers. The interface adapts its layout and input behavior to the device, so content stays front and center instead of being buried behind desktop-style controls.
+                            The goal is a living-room friendly streaming service that can also work as a Live TV player. Browse channels, open video content, continue across screens, and use the same familiar interface on Android TV, mobile, desktop, or a browser. IVIDS is especially useful when you want a unified entertainment hub without the usual advertising-first feeling of modern streaming platforms.
                         </p>
                     </div>
                     <div class="details-features">
                         <div class="feature-item">
                             <i class="fas fa-gamepad"></i>
                             <div class="feature-text">
-                                <h4>Remote-Friendly Navigation</h4>
-                                <p>Move through menus, cards, and controls naturally with a TV remote, keyboard, or touch input.</p>
+                                <h4>Ad-Free Streaming Hub</h4>
+                                <p>Keep the focus on movies, shows, and videos instead of banners, popups, and noisy platform clutter.</p>
                             </div>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-desktop"></i>
                             <div class="feature-text">
-                                <h4>Universal Layouts</h4>
-                                <p>Layouts resize for landscape TV screens, portrait mobile screens, and standard desktop browsers.</p>
+                                <h4>Live TV Player</h4>
+                                <p>Use IVIDS as a channel-style viewing space for live streams and TV-like browsing.</p>
                             </div>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-language"></i>
                             <div class="feature-text">
-                                <h4>Multi-Language Interface</h4>
-                                <p>Switch interface language so the player can feel familiar across different users and setups.</p>
+                                <h4>One Interface Everywhere</h4>
+                                <p>Move between TV, phone, desktop, and browser without relearning the way your media hub works.</p>
                             </div>
                         </div>
                     </div>
@@ -74,39 +74,15 @@
 
         <section class="content-section">
             <div class="container">
-                <h2>Technical Notes</h2>
+                <h2>Behind The Player</h2>
                 <p>
-                    IVIDS keeps the technical foundation lightweight so the interface can respond quickly to remote-control movement and platform changes.
-                </p>
-                <h3>Bespoke SPA Router</h3>
-                <p>
-                    Navigation is driven by a custom Single Page Application (SPA) routing engine (<code>router.js</code>). HTML partials are fetched from the <code>pages/</code> folder on demand, and page-specific JS modules are imported asynchronously (e.g., <code>pages/home.js</code>). This enables sub-millisecond page transitions and keeps memory footprints tiny.
-                </p>
-                <h3>D-Pad Focus Engine</h3>
-                <p>
-                    To achieve a native TV feel, the Spatial Navigation system tracks visible <code>.focusable</code> DOM items. It maps hardware arrow key strokes to calculate geometric proximity, auto-scrolling focused cards into center-screen position and adapting focus paths depending on device orientation.
-                </p>
-                <h3>Platform Execution & Android Packages</h3>
-                <p>
-                    The codebase compiles directly into a native Android application package for immediate deployment to Android devices or Android TVs, while remaining fully hostable via any lightweight HTTP server for browser access.
-                </p>
-                
-                <h3>Technical Stack</h3>
-                <ul class="tech-stack-list">
-                    <li class="tech-tag">Vanilla JavaScript (ES6+ Modules)</li>
-                    <li class="tech-tag">Spatial Navigation Engine</li>
-                    <li class="tech-tag">Custom SPA HTML Router</li>
-                    <li class="tech-tag">i18n Localization</li>
-                    <li class="tech-tag">Android Gradle / Kotlin Wrapper</li>
-                    <li class="tech-tag">CSS Grid & Flexbox</li>
-                </ul>
-
-                <h3>Getting Started</h3>
-                <p>
-                    <strong>Install on Android:</strong> Transfer and install the pre-built application package to your Android device or Android TV to run the native media player.
+                    IVIDS is still built with performance in mind, but the technology serves the viewing experience. The interface is designed for big screens, remotes, touch screens, and browsers, with fast movement between sections and layouts that adapt to the device in front of you.
                 </p>
                 <p>
-                    <strong>Run via Web Server:</strong> Serve the <code>assets/main/gui</code> directory using any local web server (such as Python <code>http.server</code> or VS Code Live Server) to run the interface on any desktop or mobile browser.
+                    The open-source codebase makes it easier to inspect, adapt, and improve the player over time. That matters because entertainment software should not have to be a closed black box that only serves the platform owner.
+                </p>
+                <p>
+                    IVIDS can be explored through the repository or run as a lightweight web interface, with Android-oriented packaging for TV and mobile use.
                 </p>
             </div>
         </section>

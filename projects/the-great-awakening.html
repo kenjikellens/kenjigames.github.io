@@ -19,12 +19,12 @@
                 <div class="section-header">
                     <span class="badge">Research Archive</span>
                     <h1>The Great <span>Awakening</span></h1>
-                    <p>A focused archive for reading, searching, and connecting public-interest research dossiers.</p>
+                    <p>An investigative archive about power, corruption, hidden influence, and the stories the public is told.</p>
                 </div>
 
                 <div class="content-block" style="margin-bottom: 80px;">
                     <p style="font-size: 1.25rem; color: var(--text-dim); margin-bottom: 32px; max-width: 800px;">
-                        The Great Awakening is a research website for visitors who want to explore complex dossiers without getting lost in scattered notes, tabs, and disconnected pages. It brings documents, summaries, categories, timelines, and related entities into one calm reading environment, so a visitor can quickly understand what a topic is about and follow the trail deeper when needed.
+                        The Great Awakening is for people who feel that the official story is often too clean, too convenient, or too incomplete. The archive collects research around governments, corporations, institutions, media narratives, secrecy, abuse of power, and the systems that shape public life behind the scenes.
                     </p>
                     <div class="hero-btns">
                         <a href="https://github.com/kenjikellens/the-great-awakening" target="_blank" class="btn">View Repository</a>
@@ -37,34 +37,34 @@
             <div class="container">
                 <div class="details-grid">
                     <div class="details-content">
-                        <h2>What The Site Helps You Do</h2>
+                        <h2>Look Past The Official Story</h2>
                         <p>
-                            The site is meant for structured investigation. Instead of presenting a single article and leaving the reader to piece everything together manually, it organizes material into dossiers with clear labels, searchable summaries, and contextual navigation. That makes it useful for comparing topics, revisiting sources, and building a clearer picture over time.
+                            This project is not just a document viewer. It is a place to follow uncomfortable questions: who benefits, who hides information, which institutions protect each other, and how public narratives are shaped before most people even notice. Each dossier is meant to help visitors slow down, compare details, and see patterns that are easy to miss when information is scattered across posts, articles, videos, and rumors.
                         </p>
                         <p>
-                            It is especially useful when a subject has many moving parts: institutions, events, claims, names, and background documents. The interface keeps the emphasis on reading and discovery, with quick search and an assistant-style helper available when a visitor needs a faster route through the archive.
+                            Inside the archive, visitors can explore topics, summaries, timelines, claims, people, organizations, events, and connections between them. The goal is to give curious readers a clearer starting point for investigating corruption, institutional misconduct, propaganda, corporate influence, and the gap between public promises and private incentives.
                         </p>
                     </div>
                     <div class="details-features">
                         <div class="feature-item">
                             <i class="fas fa-search"></i>
                             <div class="feature-text">
-                                <h4>Dossier Search</h4>
-                                <p>Find relevant topics quickly by searching titles, summaries, categories, and archive entries.</p>
+                                <h4>Dossiers & Evidence</h4>
+                                <p>Explore organized research around controversial institutions, events, networks, claims, and public accountability.</p>
                             </div>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-comments"></i>
                             <div class="feature-text">
-                                <h4>Guided Navigation</h4>
-                                <p>Use the assistant widget as a shortcut for orientation, cross-references, and archive navigation.</p>
+                                <h4>Timelines & Connections</h4>
+                                <p>Trace how people, organizations, decisions, media narratives, and major events connect over time.</p>
                             </div>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-adjust"></i>
                             <div class="feature-text">
-                                <h4>Reading Comfort</h4>
-                                <p>Switch between dark and light modes while keeping long-form dossier pages easy to scan.</p>
+                                <h4>Question The Narrative</h4>
+                                <p>Read with context, compare claims, and challenge the assumption that powerful systems always serve the public.</p>
                             </div>
                         </div>
                     </div>
@@ -74,36 +74,15 @@
 
         <section class="content-section">
             <div class="container">
-                <h2>How It Is Built</h2>
+                <h2>Behind The Archive</h2>
                 <p>
-                    The technical side exists to keep the archive fast, searchable, and easy to host. The site uses a lightweight browser-based structure, so visitors can move between dossiers without waiting on a heavy application shell.
+                    The archive is intentionally lightweight so the focus stays on reading, searching, and connecting ideas. Visitors can move between dossiers quickly, follow related topics, and keep momentum while digging through complex subjects.
                 </p>
-                <h3>Hash-Based SPA Routing</h3>
                 <p>
-                    A custom router (<code>js/router.js</code>) tracks hash modifications (e.g., <code>#home</code>, <code>#dossiers</code>, <code>#dossier/slug</code>). It dynamically loads fragment partials from <code>pages/fragments/</code> and injects dossier HTML from <code>pages/dossiers/</code> into the content shell, extracting styles to preserve unique layouts.
+                    Search, categories, themes, and guided navigation exist to make the research easier to approach, not to distract from it. The technology is there to support the investigation: faster browsing, clearer organization, and a calmer way to move through heavy material.
                 </p>
-                <h3>JSON Database Layer</h3>
                 <p>
-                    A centralized flat-file database (<code>data/dossiers.js</code>) catalogs metadata for all research records. The Dossier Manager (<code>js/dossier-manager.js</code>) reads this file to build index lists, update the dynamic mega menu, and drive the local search engine.
-                </p>
-                <h3>AI Chat & Theme Utilities</h3>
-                <p>
-                    An inline chat module (<code>js/ai-chat.js</code>) powers the helper drawer widget. User options and theme scales are governed by the <code>theme-manager.js</code>, saving selections to localStorage for seamless persistence.
-                </p>
-                
-                <h3>Technical Stack</h3>
-                <ul class="tech-stack-list">
-                    <li class="tech-tag">Custom Hash SPA Router</li>
-                    <li class="tech-tag">Flat-File JSON Database Layer</li>
-                    <li class="tech-tag">AI Assistant Chat Drawer</li>
-                    <li class="tech-tag">HTML5 Canvas Particle Simulation</li>
-                    <li class="tech-tag">Theme Manager (Dark & Light)</li>
-                    <li class="tech-tag">Vanilla ES6 JavaScript & CSS3</li>
-                </ul>
-
-                <h3>Getting Started</h3>
-                <p>
-                    Clone the source and serve the directory using a lightweight web server (e.g. <code>python -m http.server 8000</code> or VS Code Live Server) to enable <code>fetch()</code> functionality for the dynamic dossier fragments.
+                    For developers who want to inspect it, the project is kept as a simple web archive that can be served locally and expanded over time with new dossiers, summaries, and references.
                 </p>
             </div>
         </section>
